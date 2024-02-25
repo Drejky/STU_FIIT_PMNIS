@@ -2,19 +2,18 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import styles from './page.module.css';
-import L from 'leaflet';
+import classNames from 'classnames';
 
-// const map = L.map('map').setView([51.505, -0.09], 13);
+export type LeafletMapProps = {
+  className?: string;
+};
 
-// const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//   maxZoom: 19,
-//   attribution:
-//     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-// }).addTo(map);
+const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
+  console.log('foo');
+  console.log(className);
 
-const YourComponent: React.FC = () => {
   return (
-    <div className={styles.map}>
+    <div>
       <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -26,21 +25,11 @@ const YourComponent: React.FC = () => {
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossOrigin=""
       ></script>
-      {/* <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer> */}
+
       <MapContainer
         center={[51.505, -0.09]}
         zoom={13}
-        style={{ height: '100vh', width: '100%' }}
+        className={classNames(styles.map, className)}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -56,4 +45,4 @@ const YourComponent: React.FC = () => {
   );
 };
 
-export default YourComponent;
+export default LeafletMap;

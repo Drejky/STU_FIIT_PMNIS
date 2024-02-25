@@ -1,10 +1,20 @@
 .main {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+  min-height: 100vh; */
+  padding: 0%;
+}
+
+.map {
+  min-height: 10rem;
+  min-width: 10rem;
+}
+
+.foo {
+  color: red;
 }
 
 /* Mobile */
