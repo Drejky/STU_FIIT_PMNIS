@@ -27,7 +27,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
       ></script>
 
       <MapContainer
-        center={[51.505, -0.09]}
+        center={[48.3709, 17.5833]}
         zoom={13}
         className={classNames(styles.map, className)}
       >

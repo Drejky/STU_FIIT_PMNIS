@@ -9,12 +9,20 @@
 }
 
 .map {
-  min-height: 10rem;
+  min-height: 50rem;
   min-width: 10rem;
 }
 
 .foo {
   color: red;
+}
+
+.navButton {
+  flex-grow:1;
+  /* border:none; */
+  background-color: none;
+  border-bottom: 5px black;
+  padding-bottom: 10px;
 }
 
 /* Mobile */
