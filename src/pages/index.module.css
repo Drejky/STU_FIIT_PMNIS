@@ -1,24 +1,19 @@
 .main {
   display: flex;
-  /* flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  /* justify-content: space-between; */
   padding: 6rem;
-  min-height: 100vh; */
+  min-height: 100vh;
   padding: 0%;
 }
 
 .map {
-  min-height: 50rem;
+  height: calc(100vh - 4.95rem);
   min-width: 10rem;
 }
 
-.foo {
-  color: red;
-}
-
 .navButton {
-  flex-grow:1;
+  flex-grow: 1;
   /* border:none; */
   background-color: none;
   border-bottom: 5px black;

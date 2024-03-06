@@ -49,7 +49,6 @@ export default function Home() {
         </Container>
       </Navbar>
       <DynamicLeafletMap className={styles.map} />
-      <p className={styles.foo}>foo</p>
     </div>
   );
 }

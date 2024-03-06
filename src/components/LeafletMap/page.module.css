@@ -1,0 +1,9 @@
+.containter {
+  flex-grow: 1;
+  color: red;
+}
+
+.customIcon i {
+  color: red;
+  background-color: red;
+}

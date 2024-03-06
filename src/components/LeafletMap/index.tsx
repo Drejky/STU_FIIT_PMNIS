@@ -1,19 +1,55 @@
 // components/YourComponent.tsx
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './page.module.css';
 import classNames from 'classnames';
+import { faBus, prefix } from '@fortawesome/free-solid-svg-icons';
+import L from 'leaflet';
+
+// Create a new icon instance
 
 export type LeafletMapProps = {
   className?: string;
 };
 
 const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
-  console.log('foo');
-  console.log(className);
+  const [busStops, setBusStops] = useState([]);
+
+  const query = `
+  [out:json];
+  area["name"="Trnava"]["boundary"="administrative"];
+  node["highway"="bus_stop"](area);
+  out body;
+`;
+
+  const customIcon = L.divIcon({
+    className: 'customIcon',
+    html: `<i class="fas fa-bus"></i>`,
+    iconSize: [20, 20],
+  });
+  useEffect(() => {
+    fetch('https://overpass-api.de/api/interpreter', {
+      method: 'POST',
+      body: `data=${encodeURIComponent(query)}`,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setBusStops(
+          data.elements.map(
+            (element: { lat: any; lon: any; tags: { name: string } }) => ({
+              lat: element.lat,
+              lon: element.lon,
+              name: element.tags ? element.tags.name : null,
+            })
+          )
+        );
+      });
+  }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -35,11 +71,11 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {busStops.map((busStop: any) => (
+          <Marker position={[busStop.lat, busStop.lon]} icon={customIcon}>
+            <Popup>{busStop.name ? busStop.name : 'Bus stop'}</Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );
