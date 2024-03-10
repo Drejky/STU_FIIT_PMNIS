@@ -1,7 +1,7 @@
 import { LatLngLiteral } from 'leaflet';
 import { BusStop, Route } from '../types';
 
-function getRouteFromStopNames(
+export default function getRouteFromStopNames(
   busStops: BusStop[],
   order: string[],
   routeName: string

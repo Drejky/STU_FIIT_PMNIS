@@ -13,6 +13,7 @@ import { BUS_ICON, ROUTE_FILES } from '../../../lib/constants';
 import { BusStop, Route } from '../../../lib/types';
 import { BUS_STOPS_QUERY } from '../../../lib/queries';
 import getRandomColour from '../../../lib/hooks/getRandomColour';
+import getRouteFromStopNames from '../../../lib/hooks/getRouteFromStopNames';
 
 // Create a new icon instance
 
@@ -93,12 +94,22 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
           </Marker>
         ))}
         {routes.map(
-          (route) =>
+          (route, index) =>
             route?.coordinates && (
-              <Polyline
-                positions={route.coordinates}
-                color={getRandomColour()}
-              />
+              <>
+                <Polyline
+                  key={`border-${index}`}
+                  positions={route.coordinates}
+                  color="black" // This is the border color
+                  weight={8} // This should be larger than the weight of the main line
+                />
+                <Polyline
+                  key={`line-${index}`}
+                  positions={route.coordinates}
+                  color={getRandomColour()}
+                  weight={6} // This should be smaller than the weight of the border line
+                />
+              </>
             )
         )}
       </MapContainer>
@@ -107,10 +118,3 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
 };
 
 export default LeafletMap;
-function getRouteFromStopNames(
-  busStops: BusStop[],
-  order: any,
-  routeName: string
-): any {
-  throw new Error('Function not implemented.');
-}

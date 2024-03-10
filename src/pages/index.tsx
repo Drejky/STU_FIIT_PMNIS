@@ -13,6 +13,7 @@ const DynamicLeafletMap = dynamic(
 );
 import styles from './index.module.css';
 import Head from 'next/head';
+import CustomNavbar from '@/components/Navbar';
 // import styles from './index.module.css';
 
 export default function Home() {
@@ -23,31 +24,7 @@ export default function Home() {
         <button className={styles.navButton}>foo</button>
         <button className={styles.navButton}>foo</button>
       </div> */}
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="#home">Trnavikon</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+
       <DynamicLeafletMap className={styles.map} />
     </div>
   );
