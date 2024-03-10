@@ -5,14 +5,14 @@ import {
   TileLayer,
   Marker,
   Popup,
-  useMap,
   Polyline,
 } from 'react-leaflet';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './page.module.css';
 import classNames from 'classnames';
-import { faBus, prefix } from '@fortawesome/free-solid-svg-icons';
-import L from 'leaflet';
+import { BUS_ICON, ROUTE_FILES } from '../../../lib/constants';
+import { BusStop, Route } from '../../../lib/types';
+import { BUS_STOPS_QUERY } from '../../../lib/queries';
+import getRandomColour from '../../../lib/hooks/getRandomColour';
 
 // Create a new icon instance
 
@@ -20,109 +20,49 @@ export type LeafletMapProps = {
   className?: string;
 };
 
-export type BusStop = {
-  lat: number;
-  lon: number;
-  name: string;
-};
-
-export type coordinates = {
-  lat: number;
-  lon: number;
-};
-
 const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
   const [busStops, setBusStops] = useState<BusStop[]>([]);
-  const [polylinePoints, setPolylinePoints] = useState<coordinates[]>([]);
-  const [routes, setRoutes] = useState<coordinates[][]>([]);
-  const route_files = [
-    '1_stop.json',
-    '2_stop.json',
-    '3_stop.json',
-    '4_stop.json',
-    '5_stop.json',
-    '6_stop.json',
-    '12_stop.json',
-    '13_stop.json',
-    '14_stop.json',
-    '16_stop.json',
-    '21_stop.json',
-    '22_stop.json',
-    '23_stop.json',
-  ];
+  const [routes, setRoutes] = useState<(Route | null)[]>([]);
 
-  const query = `
-  [out:json];
-  area["name"="Trnava"]["boundary"="administrative"];
-  node["highway"="bus_stop"](area);
-  out body;
-`;
-
-  const customIcon = L.divIcon({
-    className: 'customIcon',
-    html: `<i class="fas fa-bus"></i>`,
-    iconSize: [20, 20],
-  });
-
+  // Fetch bus stop coordinates and names
   useEffect(() => {
     fetch('https://overpass-api.de/api/interpreter', {
       method: 'POST',
-      body: `data=${encodeURIComponent(query)}`,
+      body: `data=${encodeURIComponent(BUS_STOPS_QUERY)}`,
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     })
       .then((response) => response.json())
       .then((data) => {
         const busStopsData = data.elements.map(
-          (element: { lat: number; lon: number; tags: { name: string } }) => {
-            // console.log(element.tags ? element.tags.name : null);
-            return {
-              lat: element.lat,
-              lon: element.lon,
-              name: element.tags ? element.tags.name : null,
-            };
-          }
+          (element: { lat: number; lon: number; tags: { name: string } }) => ({
+            lat: element.lat,
+            lng: element.lon,
+            name: element.tags ? element.tags.name : null,
+          })
         );
         setBusStops(busStopsData);
       });
   }, []);
 
   useEffect(() => {
-    // Fetch each route file
-    const promises = route_files.map((route) =>
-      fetch(`/routes/${route}`)
-        .then((response) => response.json())
-        .then((order) => mapNamesToCoordinates(busStops, order))
+    // Fetch scraped route data and map it to fetched bus stops
+    const promises = ROUTE_FILES.map(
+      (route: { fileName: string; routeName: string }) =>
+        fetch(`/routes/${route.fileName}`)
+          .then((response) => response.json())
+          .then((order) =>
+            getRouteFromStopNames(busStops, order, route.routeName)
+          )
     );
 
     // Wait for all fetches to complete
     Promise.all(promises)
-      .then((coordinatesList) => {
-        // coordinatesList is an array of arrays of coordinates
-        setRoutes(coordinatesList);
+      .then((coordinatesList: (Route | null)[]) => {
+        const filteredCoordinatesList = coordinatesList.filter(Boolean);
+        setRoutes(filteredCoordinatesList);
       })
       .catch((error) => console.error(error));
-
-    console.log(routes);
   }, [busStops]);
-
-  function mapNamesToCoordinates(busStops: BusStop[], order: string[]) {
-    return order
-      .map((name) => {
-        const stop = busStops.find((stop) => stop.name == name);
-
-        return stop ? { lat: stop.lat, lon: stop.lon } : null;
-      })
-      .filter(Boolean) as coordinates[];
-  }
-
-  function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
 
   return (
     <div className={styles.container}>
@@ -147,17 +87,30 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {busStops.map((busStop: any) => (
-          <Marker position={[busStop.lat, busStop.lon]} icon={customIcon}>
+        {busStops.map((busStop: BusStop) => (
+          <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
             <Popup>{busStop.name ? busStop.name : 'Bus stop'}</Popup>
           </Marker>
         ))}
-        {routes.map((route) => (
-          <Polyline positions={route} color={getRandomColor()} />
-        ))}
+        {routes.map(
+          (route) =>
+            route?.coordinates && (
+              <Polyline
+                positions={route.coordinates}
+                color={getRandomColour()}
+              />
+            )
+        )}
       </MapContainer>
     </div>
   );
 };
 
 export default LeafletMap;
+function getRouteFromStopNames(
+  busStops: BusStop[],
+  order: any,
+  routeName: string
+): any {
+  throw new Error('Function not implemented.');
+}
