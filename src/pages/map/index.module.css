@@ -7,12 +7,12 @@
   position: absolute;
   top: 2.9rem;
   transition: ease-in-out 0.5s;
-
   width: 20rem; /* Adjust as needed */
   height: 100vh;
-  background-color: purple;
+  background-color: rgba(30, 128, 0, 0.39);
   z-index: 1000; /* Adjust as needed */
   right: -20rem;
+  font-size: larger;
 }
 
 .sidebar_closed {
@@ -21,4 +21,9 @@
 
 .sidebar_open {
   right: 0;
+}
+
+.container {
+  overflow: hidden;
+  overflow-x: hidden;
 }

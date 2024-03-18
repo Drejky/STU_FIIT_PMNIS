@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useSidebar } from '@/components/SidebarContext';
 import SideBar from '@/components/SideBar';
 import classNames from 'classnames';
+import { Route } from '../../../lib/types';
 
 const DynamicLeafletMap = dynamic(
   () => import('@/components/LeafletMap'),
@@ -18,9 +19,18 @@ const map = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const [routeFiles, setRouteFiles] = useState<Route[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const { ROUTE_FILES } = require('../../../lib/constants');
+      setRouteFiles(ROUTE_FILES);
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
-      <DynamicLeafletMap className={styles.map} />
+      <DynamicLeafletMap className={styles.map} routeFilters={routeFiles} />
       <SideBar
         sidebarOpen={sidebarOpen}
         switchSidebar={switchSidebar}
@@ -28,6 +38,8 @@ const map = () => {
           sidebarOpen ? styles.sidebar_open : styles.sidebar_closed,
           styles.sidebar
         )}
+        routeFiles={routeFiles}
+        setRouteFiles={setRouteFiles}
       />
     </div>
   );

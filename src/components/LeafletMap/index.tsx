@@ -9,19 +9,17 @@ import {
 } from 'react-leaflet';
 import styles from './page.module.css';
 import classNames from 'classnames';
-import { BUS_ICON, ROUTE_FILES } from '../../../lib/constants';
-import { BusStop, Route } from '../../../lib/types';
-import { BUS_STOPS_QUERY } from '../../../lib/queries';
-import getRandomColour from '../../../lib/hooks/getRandomColour';
-import getRouteFromStopNames from '../../../lib/hooks/getRouteFromStopNames';
-
-// Create a new icon instance
+import { BUS_ICON, ROUTE_FILES, colours } from '../../../lib/constants';
+import { BusStop, Route } from '@/../lib/types';
+import { BUS_STOPS_QUERY } from '@/../lib/queries';
+import getRouteFromStopNames from '@/../lib/hooks/getRouteFromStopNames';
 
 export type LeafletMapProps = {
   className?: string;
+  routeFilters: Route[];
 };
 
-const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
+const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
   const [busStops, setBusStops] = useState<BusStop[]>([]);
   const [routes, setRoutes] = useState<(Route | null)[]>([]);
 
@@ -63,6 +61,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
         setRoutes(filteredCoordinatesList);
       })
       .catch((error) => console.error(error));
+
+    console.log(routes);
   }, [busStops]);
 
   return (
@@ -93,31 +93,37 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
             <Popup>{busStop.name ? busStop.name : 'Bus stop'}</Popup>
           </Marker>
         ))}
-        {routes.map((route, index) => {
-          const colour = getRandomColour();
-          return route?.coordinates.map((section, sectionIndex) => (
-            <>
-              <Polyline
-                key={`border-${index}`}
-                positions={route.coordinates.slice(
-                  sectionIndex,
-                  sectionIndex + 2
-                )}
-                color="black" // This is the border color
-                weight={8} // This should be larger than the weight of the main line
-              />
-              <Polyline
-                key={`line-${index}`}
-                positions={route.coordinates.slice(
-                  sectionIndex,
-                  sectionIndex + 2
-                )}
-                color={colour}
-                weight={6} // This should be smaller than the weight of the border line
-              />
-            </>
-          ));
-        })}
+        {routes
+          .filter((route) => {
+            const routeFilter = routeFilters.find(
+              (filter) => filter.routeName === route?.routeName
+            );
+            return routeFilter?.show;
+          })
+          .map((route, index) => {
+            return route?.coordinates.map((section, sectionIndex) => (
+              <>
+                <Polyline
+                  key={`border-${index}`}
+                  positions={route.coordinates.slice(
+                    sectionIndex,
+                    sectionIndex + 2
+                  )}
+                  color="black" // This is the border color
+                  weight={8} // This should be larger than the weight of the main line
+                />
+                <Polyline
+                  key={`line-${index}`}
+                  positions={route.coordinates.slice(
+                    sectionIndex,
+                    sectionIndex + 2
+                  )}
+                  color={colours[index]}
+                  weight={6} // This should be smaller than the weight of the border line
+                />
+              </>
+            ));
+          })}
       </MapContainer>
     </div>
   );

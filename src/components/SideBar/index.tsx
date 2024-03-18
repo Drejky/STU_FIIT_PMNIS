@@ -11,24 +11,43 @@ export type SideBarProps = {
   sidebarOpen: boolean;
   switchSidebar: Function;
   classname?: any;
+  routeFiles: Route[];
+  setRouteFiles: Function;
 };
 
 const SideBar: React.FC<SideBarProps> = ({
   sidebarOpen,
   switchSidebar,
   classname,
+  routeFiles,
+  setRouteFiles,
 }) => {
-  const [routeFiles, setRouteFiles] = useState<Route[]>([]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const { ROUTE_FILES } = require('../../../lib/constants');
-      setRouteFiles(ROUTE_FILES);
-    }
-  }, []);
   return (
     <div className={classNames(classname, styles.sidebar)}>
-      <p>TODO</p>
+      {routeFiles.map((route, index) => (
+        <div className={styles.filter} key={index}>
+          {route.routeName}
+          <div className={styles.checkbox_wrapper_3}>
+            <input
+              type="checkbox"
+              id={`checkbox-${index}`}
+              className={styles.checkbox}
+              checked={route.show}
+              onChange={() => {
+                const newRouteFiles = routeFiles.map((rf) =>
+                  rf.routeName === route.routeName
+                    ? { ...rf, show: !rf.show }
+                    : rf
+                );
+                setRouteFiles(newRouteFiles);
+              }}
+            />
+            <label htmlFor={`checkbox-${index}`} className={styles.toggle}>
+              <span className={styles.styleSpan}></span>
+            </label>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

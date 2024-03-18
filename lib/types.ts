@@ -6,6 +6,7 @@ export type BusStop = LatLngLiteral & {
 export type Route = {
   coordinates: RouteSection[];
   routeName: string;
+  show?: boolean;
 };
 
 export type RouteSection = LatLngLiteral & {
