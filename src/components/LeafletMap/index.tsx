@@ -93,25 +93,31 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className }) => {
             <Popup>{busStop.name ? busStop.name : 'Bus stop'}</Popup>
           </Marker>
         ))}
-        {routes.map(
-          (route, index) =>
-            route?.coordinates && (
-              <>
-                <Polyline
-                  key={`border-${index}`}
-                  positions={route.coordinates}
-                  color="black" // This is the border color
-                  weight={8} // This should be larger than the weight of the main line
-                />
-                <Polyline
-                  key={`line-${index}`}
-                  positions={route.coordinates}
-                  color={getRandomColour()}
-                  weight={6} // This should be smaller than the weight of the border line
-                />
-              </>
-            )
-        )}
+        {routes.map((route, index) => {
+          const colour = getRandomColour();
+          return route?.coordinates.map((section, sectionIndex) => (
+            <>
+              <Polyline
+                key={`border-${index}`}
+                positions={route.coordinates.slice(
+                  sectionIndex,
+                  sectionIndex + 2
+                )}
+                color="black" // This is the border color
+                weight={8} // This should be larger than the weight of the main line
+              />
+              <Polyline
+                key={`line-${index}`}
+                positions={route.coordinates.slice(
+                  sectionIndex,
+                  sectionIndex + 2
+                )}
+                color={colour}
+                weight={6} // This should be smaller than the weight of the border line
+              />
+            </>
+          ));
+        })}
       </MapContainer>
     </div>
   );

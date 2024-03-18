@@ -1,37 +1,44 @@
 import React from 'react';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import style from './page.module.css';
+import { useRouter } from 'next/router';
+import { useSidebar } from '@/components/SidebarContext';
 
-interface Props {
-  // Define your prop types here
-}
-
-const CustomNavbar: React.FC<Props> = (props) => {
-  // Component logic here
+const CustomNavbar: React.FC = () => {
+  const router = useRouter();
+  const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Trnavikon</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className={style.navbar_container}>
+      <h1 className={style.title} onClick={() => router.push('/')}>
+        Trnavikon
+      </h1>
+      <div className={style.button_container}>
+        <button
+          className={style.navbar_button}
+          onClick={() => router.push('/map')}
+        >
+          Map
+        </button>
+        <button
+          className={style.navbar_button}
+          onClick={() => router.push('/data')}
+        >
+          Data
+        </button>
+        <button
+          className={style.navbar_button}
+          onClick={() => router.push('/grafikon')}
+        >
+          Grafikon
+        </button>
+      </div>
+      <button
+        className={style.filters}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        Filt
+      </button>
+    </div>
   );
 };
 

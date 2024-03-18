@@ -4,6 +4,10 @@ export type BusStop = LatLngLiteral & {
   name: string;
 };
 export type Route = {
-  coordinates: LatLngLiteral[];
+  coordinates: RouteSection[];
   routeName: string;
+};
+
+export type RouteSection = LatLngLiteral & {
+  howBusy?: number;
 };

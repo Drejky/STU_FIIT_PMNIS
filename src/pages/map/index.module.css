@@ -1,0 +1,24 @@
+.map {
+  height: calc(100vh - 4.95rem);
+  min-width: 10rem;
+}
+
+.sidebar {
+  position: absolute;
+  top: 2.9rem;
+  transition: ease-in-out 0.5s;
+
+  width: 20rem; /* Adjust as needed */
+  height: 100vh;
+  background-color: purple;
+  z-index: 1000; /* Adjust as needed */
+  right: -20rem;
+}
+
+.sidebar_closed {
+  right: -20rem;
+}
+
+.sidebar_open {
+  right: 0;
+}

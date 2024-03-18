@@ -1,4 +1,4 @@
-.containter {
+/* .containter {
   flex-grow: 1;
   color: red;
 }
@@ -6,4 +6,9 @@
 .customIcon i {
   color: red;
   background-color: red;
+} */
+
+.map {
+  /* height: 15rem; */
+  flex: 2;
 }
