@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popupTitle {
+  font-weight: bold;
+
+  padding: 0;
+  margin: 0;
+}
+.graphsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  background-color: rgb(17, 0, 77);
+  border: none;
+  padding: 0.5rem 4rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dataDayText {
+  padding: 0;
+  margin: 0 !important;
+  white-space: nowrap;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(109, 109, 255);
+}
+
+.dataDayContainer {
+  display: flex;
+  flex-direction: column;
+}

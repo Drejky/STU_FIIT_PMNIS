@@ -6,3 +6,9 @@ body {
 .customIcon i {
   color: darkblue;
 }
+
+.leaflet-popup-content {
+  padding: 0.5rem;
+  margin: 0 !important;
+  width: auto !important;
+}

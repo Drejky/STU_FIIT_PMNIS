@@ -13,6 +13,7 @@ import { BUS_ICON, ROUTE_FILES, colours } from '../../../lib/constants';
 import { BusStop, Route } from '@/../lib/types';
 import { BUS_STOPS_QUERY } from '@/../lib/queries';
 import getRouteFromStopNames from '@/../lib/hooks/getRouteFromStopNames';
+import CustomMapPin from '../CustomMapPin';
 
 export type LeafletMapProps = {
   className?: string;
@@ -66,66 +67,70 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
   }, [busStops]);
 
   return (
-    <div className={styles.container}>
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossOrigin=""
-      />
-      <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossOrigin=""
-      ></script>
-
-      <MapContainer
-        center={[48.3709, 17.5833]}
-        zoom={13}
-        className={classNames(styles.map, className)}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    window !== undefined && (
+      <div className={styles.container}>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossOrigin=""
         />
-        {busStops.map((busStop: BusStop) => (
-          <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
-            <Popup>{busStop.name ? busStop.name : 'Bus stop'}</Popup>
-          </Marker>
-        ))}
-        {routes
-          .filter((route) => {
-            const routeFilter = routeFilters.find(
-              (filter) => filter.routeName === route?.routeName
-            );
-            return routeFilter?.show;
-          })
-          .map((route, index) => {
-            return route?.coordinates.map((section, sectionIndex) => (
-              <>
-                <Polyline
-                  key={`border-${index}`}
-                  positions={route.coordinates.slice(
-                    sectionIndex,
-                    sectionIndex + 2
-                  )}
-                  color="black" // This is the border color
-                  weight={8} // This should be larger than the weight of the main line
-                />
-                <Polyline
-                  key={`line-${index}`}
-                  positions={route.coordinates.slice(
-                    sectionIndex,
-                    sectionIndex + 2
-                  )}
-                  color={colours[index]}
-                  weight={6} // This should be smaller than the weight of the border line
-                />
-              </>
-            ));
-          })}
-      </MapContainer>
-    </div>
+        <script
+          src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossOrigin=""
+        ></script>
+
+        <MapContainer
+          center={[48.3709, 17.5833]}
+          zoom={13}
+          className={classNames(styles.map, className)}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {busStops.map((busStop: BusStop) => (
+            <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
+              <Popup className={styles.popup} closeButton={false}>
+                <CustomMapPin name={busStop.name ? busStop.name : 'Bus stop'} />
+              </Popup>
+            </Marker>
+          ))}
+          {routes
+            .filter((route) => {
+              const routeFilter = routeFilters.find(
+                (filter) => filter.routeName === route?.routeName
+              );
+              return routeFilter?.show;
+            })
+            .map((route, index) => {
+              return route?.coordinates.map((section, sectionIndex) => (
+                <>
+                  <Polyline
+                    key={`border-${index}`}
+                    positions={route.coordinates.slice(
+                      sectionIndex,
+                      sectionIndex + 2
+                    )}
+                    color="black" // This is the border color
+                    weight={8} // This should be larger than the weight of the main line
+                  />
+                  <Polyline
+                    key={`line-${index}`}
+                    positions={route.coordinates.slice(
+                      sectionIndex,
+                      sectionIndex + 2
+                    )}
+                    color={colours[index]}
+                    weight={6} // This should be smaller than the weight of the border line
+                  />
+                </>
+              ));
+            })}
+        </MapContainer>
+      </div>
+    )
   );
 };
 

@@ -1,14 +1,9 @@
-/* .containter {
-  flex-grow: 1;
-  color: red;
+.popup {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 0.75rem;
 }
 
-.customIcon i {
-  color: red;
-  background-color: red;
-} */
-
-.map {
-  /* height: 15rem; */
-  flex: 2;
+.leaflet-popup-content-wrapper,
+.leaflet-popup-content {
+  background-color: blue;
 }
