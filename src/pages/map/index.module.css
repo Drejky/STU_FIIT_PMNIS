@@ -1,14 +1,14 @@
 .map {
-  height: calc(100vh - 4.95rem);
+  height: calc(100vh - var(--navbarHeight));
   min-width: 10rem;
 }
 
 .sidebar {
   position: absolute;
-  top: 2.9rem;
+  top: var(--navbarHeight);
   transition: ease-in-out 0.5s;
   width: 20rem; /* Adjust as needed */
-  height: 100vh;
+  height: calc(100vh - var(--navbarHeight));
   background-color: rgba(30, 128, 0, 0.39);
   z-index: 1000; /* Adjust as needed */
   right: -20rem;

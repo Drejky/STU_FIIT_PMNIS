@@ -1,19 +1,13 @@
-// components/YourComponent.tsx
 import React, { useEffect, useState } from 'react';
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Polyline,
-} from 'react-leaflet';
+import { GridLoader } from 'react-spinners';
+import { Marker, Popup, Polyline } from 'react-leaflet';
 import styles from './page.module.css';
-import classNames from 'classnames';
 import { BUS_ICON, ROUTE_FILES, colours } from '../../../lib/constants';
 import { BusStop, Route } from '@/../lib/types';
-import { BUS_STOPS_QUERY } from '@/../lib/queries';
 import getRouteFromStopNames from '@/../lib/hooks/getRouteFromStopNames';
 import CustomMapPin from '../CustomMapPin';
+import useBusStops from '@/hooks/useBusStops';
+import CustomMap from '@/components/CustomMap';
 
 export type LeafletMapProps = {
   className?: string;
@@ -21,28 +15,12 @@ export type LeafletMapProps = {
 };
 
 const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
-  const [busStops, setBusStops] = useState<BusStop[]>([]);
+  const {
+    busStops,
+    isLoading: busStopsLoading,
+    error: busStopsError,
+  } = useBusStops();
   const [routes, setRoutes] = useState<(Route | null)[]>([]);
-
-  // Fetch bus stop coordinates and names
-  useEffect(() => {
-    fetch('https://overpass-api.de/api/interpreter', {
-      method: 'POST',
-      body: `data=${encodeURIComponent(BUS_STOPS_QUERY)}`,
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const busStopsData = data.elements.map(
-          (element: { lat: number; lon: number; tags: { name: string } }) => ({
-            lat: element.lat,
-            lng: element.lon,
-            name: element.tags ? element.tags.name : null,
-          })
-        );
-        setBusStops(busStopsData);
-      });
-  }, []);
 
   useEffect(() => {
     // Fetch scraped route data and map it to fetched bus stops
@@ -66,30 +44,31 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
     console.log(routes);
   }, [busStops]);
 
-  return (
-    window !== undefined && (
+  if (busStopsLoading) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignContent: 'center',
+          height: '100vh',
+        }}
+      >
+        <GridLoader color="rgb(17,0,77)" size={30} />
+      </div>
+    );
+  } else if (busStopsError) {
+    return (
       <div className={styles.container}>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossOrigin=""
-        />
-        <script
-          src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-          crossOrigin=""
-        ></script>
-
-        <MapContainer
-          center={[48.3709, 17.5833]}
-          zoom={13}
-          className={classNames(styles.map, className)}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+        <p>There was an error loading the bus stops</p>
+      </div>
+    );
+  } else {
+    return (
+      // window !== undefined &&
+      !busStopsLoading && (
+        <CustomMap className={className}>
           {busStops.map((busStop: BusStop) => (
             <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
               <Popup className={styles.popup} closeButton={false}>
@@ -128,10 +107,10 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
                 </>
               ));
             })}
-        </MapContainer>
-      </div>
-    )
-  );
+        </CustomMap>
+      )
+    );
+  }
 };
 
 export default LeafletMap;

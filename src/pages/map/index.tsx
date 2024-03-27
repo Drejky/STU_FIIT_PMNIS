@@ -13,7 +13,7 @@ const DynamicLeafletMap = dynamic(
   { ssr: false } // This will disable server-side rendering for the LeafletMap component
 );
 
-const map = () => {
+const mapPage = () => {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
   const switchSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -45,4 +45,4 @@ const map = () => {
   );
 };
 
-export default map;
+export default mapPage;

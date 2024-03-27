@@ -1,4 +1,4 @@
-/* .popup {
+.popup {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 0.75rem;
 }
@@ -6,4 +6,11 @@
 .leaflet-popup-content-wrapper,
 .leaflet-popup-content {
   background-color: blue;
-} */
+}
+
+.container {
+  background-color: red;
+  height: 10rem;
+  width: 100vw;
+  height: calc(100vh - var(--navbarHeight));
+}
