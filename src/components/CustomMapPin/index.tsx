@@ -1,15 +1,10 @@
 import styles from './page.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import _ from 'lodash';
 import { useMapEvents } from 'react-leaflet';
-
-export type CustomMapPinProps = {
-  name: string;
-  classname?: any;
-};
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,6 +15,7 @@ import {
   Legend,
 } from 'chart.js';
 import { useRouter } from 'next/router';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,6 +24,11 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+export type CustomMapPinProps = {
+  name: string;
+  classname?: any;
+};
 
 const CustomMapPin: React.FC<CustomMapPinProps> = ({ name, classname }) => {
   const router = useRouter();

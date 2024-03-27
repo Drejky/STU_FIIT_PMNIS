@@ -44,3 +44,8 @@
   margin: 0;
   color: grey;
 }
+
+.map {
+  height: 30rem;
+  width: 30rem;
+}
