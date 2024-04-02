@@ -11,6 +11,9 @@ import { GridLoader } from 'react-spinners';
 import { useState, useEffect } from 'react';
 import createBusIcon from '@/hooks/useBusIcon';
 import L from 'leaflet';
+const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
+  ssr: false,
+});
 
 const Marker = dynamic(
   () => import('react-leaflet').then((mod) => mod.Marker),
@@ -48,20 +51,20 @@ const grafikonPage = () => {
             </div>
             <div className={styles.mapContainer}>
               <CustomMap className={styles.map}>
-                <Marker position={[48.3806511, 17.5799572]}>
+                {/* <CustomMarker position={[busStops[5].lat, busStops[5].lng]}>
                   <Popup>
-                    <CustomMapPin name={busStops[0].name} />
+                    <CustomMapPin name={busStops[5].name} />
                   </Popup>
-                </Marker>
-                {/* {busStops.map((busStop: BusStop) => (
-                  <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
+                </CustomMarker> */}
+                {busStops.map((busStop: BusStop) => (
+                  <CustomMarker position={[busStop.lat, busStop.lng]}>
                     <Popup className={styles.popup} closeButton={false}>
                       <CustomMapPin
                         name={busStop.name ? busStop.name : 'Bus stop'}
                       />
                     </Popup>
-                  </Marker>
-                ))} */}
+                  </CustomMarker>
+                ))}
               </CustomMap>
             </div>
           </div>
