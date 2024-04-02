@@ -1,12 +1,24 @@
 .container {
-  padding: 0.5rem;
-}
-
-.grafikonContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 1rem;
+  /* width: 400px;
+  height: 400px; */
+  background-color: 'pruple';
+  display: grid;
+  /* grid-template-columns: 200px 200px; */
+  grid-template-columns: auto auto;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  overflow-x: scroll;
+  .grafikonContainer {
+    border: black 5px solid;
+    display: flex;
+    padding: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 45rem;
+  }
 }
 
 .grafikonContent {
@@ -16,15 +28,20 @@
 }
 
 .mapContainer {
-  /* width: 50rem;
-  height: 50rem;
-  background-color: red; */
+  /* width: 20rem !important;
+  height: 20rem !important; */
+  width: auto;
+  height: auto;
+  background-color: none !important;
+  /* background-color: red; */
 }
 
 .busStopList {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  overflow-y: scroll;
+  height: 30rem;
 }
 
 .busStop {

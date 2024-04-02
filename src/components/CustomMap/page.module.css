@@ -8,9 +8,9 @@
   background-color: blue;
 }
 
-.container {
+/* .container {
   background-color: red;
   height: 10rem;
   width: 100vw;
   height: calc(100vh - var(--navbarHeight));
-}
+} */

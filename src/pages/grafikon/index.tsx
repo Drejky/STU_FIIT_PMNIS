@@ -31,44 +31,59 @@ const CustomMapPin = dynamic(() => import('@/components/CustomMapPin'), {
 const grafikonPage = () => {
   const { busStops, isLoading, error } = useBusStops();
 
-  if (isLoading) return <GridLoader color="rgb(17,0,77)" size={30} />;
+  if (isLoading)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignContent: 'center',
+          height: '100vh',
+        }}
+      >
+        <GridLoader color="rgb(17,0,77)" size={30} />
+      </div>
+    );
   if (error) return <div>Error: {error.message}</div>;
   return (
     window && (
       <div className={styles.container}>
-        <div className={styles.grafikonContainer}>
-          <h1>Grafikon N</h1>
-          <div className={styles.grafikonContent}>
-            <div className={styles.busStopList}>
-              {_.range(10).map((i: number) => {
-                return (
-                  <div className={styles.busStop}>
-                    <p className={styles.busStopName}>Bus1 </p>
-                    <button className={styles.busStopDetail}> Detail</button>
-                  </div>
-                );
-              })}
-            </div>
-            <div className={styles.mapContainer}>
-              <CustomMap className={styles.map}>
-                {/* <CustomMarker position={[busStops[5].lat, busStops[5].lng]}>
+        {_.range(4).map((foo) => (
+          <div className={styles.grafikonContainer}>
+            <h1>Grafikon {foo + 1}</h1>
+            <div className={styles.grafikonContent}>
+              <div className={styles.busStopList}>
+                {_.range(10).map((i) => {
+                  return (
+                    <div className={styles.busStop}>
+                      <p className={styles.busStopName}>Bus1 </p>
+                      <button className={styles.busStopDetail}> Detail</button>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className={styles.mapContainer}>
+                <CustomMap className={styles.map}>
+                  {/* <CustomMarker position={[busStops[5].lat, busStops[5].lng]}>
                   <Popup>
                     <CustomMapPin name={busStops[5].name} />
                   </Popup>
                 </CustomMarker> */}
-                {busStops.map((busStop: BusStop) => (
-                  <CustomMarker position={[busStop.lat, busStop.lng]}>
-                    <Popup className={styles.popup} closeButton={false}>
-                      <CustomMapPin
-                        name={busStop.name ? busStop.name : 'Bus stop'}
-                      />
-                    </Popup>
-                  </CustomMarker>
-                ))}
-              </CustomMap>
+                  {busStops.map((busStop: BusStop) => (
+                    <CustomMarker position={[busStop.lat, busStop.lng]}>
+                      <Popup className={styles.popup} closeButton={false}>
+                        <CustomMapPin
+                          name={busStop.name ? busStop.name : 'Bus stop'}
+                        />
+                      </Popup>
+                    </CustomMarker>
+                  ))}
+                </CustomMap>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     )
   );
