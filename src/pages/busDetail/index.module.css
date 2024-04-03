@@ -1,0 +1,18 @@
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.text {
+  margin: 0;
+}
+
+.title {
+  margin: 0;
+}
+.subTitle {
+  font-style: italic;
+  font-weight: 500;
+}

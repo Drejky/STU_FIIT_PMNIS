@@ -14,6 +14,7 @@ import {
 import _ from 'lodash';
 import { faker } from '@faker-js/faker';
 import useBusStops from '@/hooks/useBusStops';
+import Loading from '@/components/Loading';
 
 ChartJS.register(
   CategoryScale,
@@ -26,8 +27,7 @@ ChartJS.register(
 
 const DataTable = () => {
   const { busStops, isLoading, error } = useBusStops();
-  console.log(busStops);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   return (
     <div>
       <table className={styles.table}>

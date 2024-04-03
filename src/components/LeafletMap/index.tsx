@@ -8,6 +8,7 @@ import getRouteFromStopNames from '@/../lib/hooks/getRouteFromStopNames';
 import CustomMapPin from '../CustomMapPin';
 import useBusStops from '@/hooks/useBusStops';
 import CustomMap from '@/components/CustomMap';
+import Loading from '../Loading';
 
 export type LeafletMapProps = {
   className?: string;
@@ -45,19 +46,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
   }, [busStops]);
 
   if (busStopsLoading) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignContent: 'center',
-          height: '100vh',
-        }}
-      >
-        <GridLoader color="rgb(17,0,77)" size={30} />
-      </div>
-    );
+    return <Loading />;
   } else if (busStopsError) {
     return (
       <div className={styles.container}>

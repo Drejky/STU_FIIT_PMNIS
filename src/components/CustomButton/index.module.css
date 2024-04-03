@@ -1,0 +1,21 @@
+.button {
+  background: linear-gradient(
+    90deg,
+    rgba(129, 144, 230, 0.3) 0%,
+    rgba(99, 79, 209, 0.3) 100%
+  );
+  border: solid black 2px;
+  border-radius: 1rem;
+  padding: 1rem 2rem 1rem 2rem;
+  transition: all 0.1s ease-in-out 0s;
+  font-size: medium;
+  font-weight: 700;
+}
+
+.button:hover {
+  background-color: #f1f1f13b;
+  cursor: pointer;
+  /* transform: translateY(-6px); */
+  color: #4400ff;
+  border-color: #4400ff;
+}

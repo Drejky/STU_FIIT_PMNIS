@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import styles from './index.module.css';
-import _ from 'lodash';
+import _, { set } from 'lodash';
 import CustomMap from '@/components/CustomMap';
 import useBusStops from '@/hooks/useBusStops';
 // import CustomMapPin from '@/components/CustomMapPin';
@@ -11,6 +11,11 @@ import { GridLoader } from 'react-spinners';
 import { useState, useEffect } from 'react';
 import createBusIcon from '@/hooks/useBusIcon';
 import L from 'leaflet';
+import { Rating, Typography } from '@mui/material';
+import CustomButton from '@/components/CustomButton';
+import Loading from '@/components/Loading';
+import { useRouter } from 'next/router';
+
 const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
   ssr: false,
 });
@@ -29,23 +34,37 @@ const CustomMapPin = dynamic(() => import('@/components/CustomMapPin'), {
 });
 
 const grafikonPage = () => {
+  const [fakeLoad, setFakeLoad] = useState(true);
+  const [fakeLoadPending, setFakeLoadPending] = useState(false);
   const { busStops, isLoading, error } = useBusStops();
-
-  if (isLoading)
+  const [ratings, setRatings] = useState<number[]>([]);
+  const router = useRouter();
+  if (isLoading) return <Loading />;
+  if (error) return <div>Error: {error.message}</div>;
+  if (fakeLoad) {
+    if (fakeLoadPending) return <Loading />;
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignContent: 'center',
-          height: '100vh',
-        }}
-      >
-        <GridLoader color="rgb(17,0,77)" size={30} />
+      <div className={styles.loadingContainer}>
+        <p className={styles.description}>
+          Návrh nových grafikonov sa realizuje podla klasifikacie vyťaženosti.
+          Navrhnuté grafikony ponúkajú 4 najlepšie alternatívy, kde každá je
+          ohodnotená percentami. Trnavikon sa adaptuje a učí sa navrhovať lepšie
+          grafikony podľa používateľovho hodnotenia.
+        </p>
+        <CustomButton
+          onclick={() => {
+            setFakeLoadPending(true);
+            setTimeout(() => {
+              setFakeLoad(false);
+            }, 1);
+          }}
+        >
+          Generuj
+        </CustomButton>
       </div>
     );
-  if (error) return <div>Error: {error.message}</div>;
+    // setFakeLoad(false);
+  }
   return (
     window && (
       <div className={styles.container}>
@@ -57,8 +76,16 @@ const grafikonPage = () => {
                 {_.range(10).map((i) => {
                   return (
                     <div className={styles.busStop}>
-                      <p className={styles.busStopName}>Bus1 </p>
-                      <button className={styles.busStopDetail}> Detail</button>
+                      <p className={styles.busStopName}>Linka {i + 1} </p>
+                      <button
+                        className={styles.busStopDetail}
+                        onClick={() => {
+                          router.push('/busDetail');
+                        }}
+                      >
+                        {' '}
+                        Detail
+                      </button>
                     </div>
                   );
                 })}
@@ -82,6 +109,23 @@ const grafikonPage = () => {
                 </CustomMap>
               </div>
             </div>
+            <div className={styles.rating}>
+              <Typography>Rate grafikon</Typography>
+              <Rating
+                name="simple-controlled"
+                value={ratings[foo]}
+                onChange={(event, newValue) => {
+                  if (typeof newValue === 'number') {
+                    setRatings(
+                      ratings.map((item, index) =>
+                        index === foo ? newValue : item
+                      )
+                    );
+                  }
+                }}
+              />
+            </div>
+            <CustomButton onclick={null}>Detail Grafikonu</CustomButton>{' '}
           </div>
         ))}
       </div>
