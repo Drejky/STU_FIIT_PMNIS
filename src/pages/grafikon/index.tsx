@@ -38,6 +38,8 @@ const grafikonPage = () => {
   const [fakeLoadPending, setFakeLoadPending] = useState(false);
   const { busStops, isLoading, error } = useBusStops();
   const [ratings, setRatings] = useState<number[]>([]);
+  const [isIframeOpen, setIsIframeOpen] = useState(false);
+
   const router = useRouter();
   if (isLoading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
@@ -52,7 +54,7 @@ const grafikonPage = () => {
           grafikony podľa používateľovho hodnotenia.
         </p>
         <CustomButton
-          onclick={() => {
+          onClick={() => {
             setFakeLoadPending(true);
             setTimeout(() => {
               setFakeLoad(false);
@@ -80,10 +82,9 @@ const grafikonPage = () => {
                       <button
                         className={styles.busStopDetail}
                         onClick={() => {
-                          router.push('/busDetail');
+                          setIsIframeOpen(!isIframeOpen);
                         }}
                       >
-                        {' '}
                         Detail
                       </button>
                     </div>
@@ -125,9 +126,20 @@ const grafikonPage = () => {
                 }}
               />
             </div>
-            <CustomButton onclick={null}>Detail Grafikonu</CustomButton>{' '}
+            <CustomButton onClick={() => null}>Detail Grafikonu</CustomButton>{' '}
           </div>
         ))}
+        {isIframeOpen && (
+          <div className={styles.iframeModal}>
+            <iframe src="/busDetail" title="Bus Detail"></iframe>
+            <CustomButton
+              onClick={() => setIsIframeOpen(false)}
+              className={styles.whiteButton}
+            >
+              Close
+            </CustomButton>
+          </div>
+        )}
       </div>
     )
   );

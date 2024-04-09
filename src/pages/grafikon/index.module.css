@@ -95,3 +95,34 @@
   align-items: center;
   gap: 4rem;
 }
+
+.iframeModal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.iframeModal iframe {
+  width: 80%;
+  height: 80%;
+  background-color: white;
+}
+
+.whiteButton {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+.whiteButton:hover {
+  color: rgb(236, 150, 255) !important;
+  border-color: rgb(236, 150, 255) !important;
+}

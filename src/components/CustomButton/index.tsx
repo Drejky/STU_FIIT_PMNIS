@@ -1,15 +1,22 @@
 import { ReactNode } from 'react';
 import styles from './index.module.css';
+import { ClassNames } from '@emotion/react';
+import classNames from 'classnames';
 
 const CustomButton = ({
   children,
-  onclick,
+  onClick,
+  className,
 }: {
-  onclick: any;
-  children: ReactNode;
+  onClick: () => void;
+  children?: ReactNode;
+  className?: any;
 }) => {
   return (
-    <button onClick={onclick} className={styles.button}>
+    <button
+      onClick={onClick}
+      className={classNames([className, styles.button])}
+    >
       {' '}
       {children}
     </button>
