@@ -38,7 +38,8 @@ const grafikonPage = () => {
   const [fakeLoadPending, setFakeLoadPending] = useState(false);
   const { busStops, isLoading, error } = useBusStops();
   const [ratings, setRatings] = useState<number[]>([]);
-  const [isIframeOpen, setIsIframeOpen] = useState(false);
+  const [busDetailIframe, setBusDetailIframe] = useState(false);
+  const [grafikonDetailIframe, setGrafikonDetailIframe] = useState(false);
 
   const router = useRouter();
   if (isLoading) return <Loading />;
@@ -82,7 +83,7 @@ const grafikonPage = () => {
                       <button
                         className={styles.busStopDetail}
                         onClick={() => {
-                          setIsIframeOpen(!isIframeOpen);
+                          setBusDetailIframe(!busDetailIframe);
                         }}
                       >
                         Detail
@@ -126,14 +127,27 @@ const grafikonPage = () => {
                 }}
               />
             </div>
-            <CustomButton onClick={() => null}>Detail Grafikonu</CustomButton>{' '}
+            <CustomButton onClick={() => setGrafikonDetailIframe(true)}>
+              Detail Grafikonu
+            </CustomButton>{' '}
           </div>
         ))}
-        {isIframeOpen && (
+        {busDetailIframe && (
           <div className={styles.iframeModal}>
             <iframe src="/busDetail" title="Bus Detail"></iframe>
             <CustomButton
-              onClick={() => setIsIframeOpen(false)}
+              onClick={() => setBusDetailIframe(false)}
+              className={styles.whiteButton}
+            >
+              Close
+            </CustomButton>
+          </div>
+        )}
+        {grafikonDetailIframe && (
+          <div className={styles.iframeModal}>
+            <iframe src="/grafikonDetail" title="Bus Detail"></iframe>
+            <CustomButton
+              onClick={() => setGrafikonDetailIframe(false)}
               className={styles.whiteButton}
             >
               Close

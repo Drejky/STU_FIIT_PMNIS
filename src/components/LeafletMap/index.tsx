@@ -41,8 +41,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
         setRoutes(filteredCoordinatesList);
       })
       .catch((error) => console.error(error));
-
-    console.log(routes);
   }, [busStops]);
 
   if (busStopsLoading) {

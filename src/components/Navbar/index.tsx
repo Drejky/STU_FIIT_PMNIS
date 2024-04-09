@@ -7,7 +7,8 @@ const CustomNavbar: React.FC = () => {
   const router = useRouter();
   const { sidebarOpen, setSidebarOpen } = useSidebar();
   console.log(router.pathname);
-  if (router.pathname === '/busDetail') return '';
+  if (router.pathname === '/busDetail' || router.pathname === '/grafikonDetail')
+    return '';
   return (
     <div className={style.navbar_container}>
       <h1 className={style.title} onClick={() => router.push('/')}>
