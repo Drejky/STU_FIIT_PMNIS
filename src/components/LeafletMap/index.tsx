@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GridLoader } from 'react-spinners';
-import { Marker, Popup, Polyline } from 'react-leaflet';
+import { Marker, Popup, Polyline, MapContainer } from 'react-leaflet';
 import styles from './page.module.css';
 import { BUS_ICON, ROUTE_FILES, colours } from '../../../lib/constants';
 import { BusStop, Route } from '@/../lib/types';
@@ -9,6 +9,7 @@ import CustomMapPin from '../CustomMapPin';
 import useBusStops from '@/hooks/useBusStops';
 import CustomMap from '@/components/CustomMap';
 import Loading from '../Loading';
+import MapRoute from '../MapRoute';
 
 export type LeafletMapProps = {
   className?: string;
@@ -71,28 +72,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
               return routeFilter?.show;
             })
             .map((route, index) => {
-              return route?.coordinates.map((section, sectionIndex) => (
-                <>
-                  <Polyline
-                    key={`border-${index}`}
-                    positions={route.coordinates.slice(
-                      sectionIndex,
-                      sectionIndex + 2
-                    )}
-                    color="black" // This is the border color
-                    weight={8} // This should be larger than the weight of the main line
-                  />
-                  <Polyline
-                    key={`line-${index}`}
-                    positions={route.coordinates.slice(
-                      sectionIndex,
-                      sectionIndex + 2
-                    )}
-                    color={colours[index]}
-                    weight={6} // This should be smaller than the weight of the border line
-                  />
-                </>
-              ));
+              return <MapRoute route={route} />;
             })}
         </CustomMap>
       )

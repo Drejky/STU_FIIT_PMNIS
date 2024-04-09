@@ -34,7 +34,7 @@ const CustomMapPin = dynamic(() => import('@/components/CustomMapPin'), {
 });
 
 const grafikonPage = () => {
-  const [fakeLoad, setFakeLoad] = useState(true);
+  const [fakeLoad, setFakeLoad] = useState(false);
   const [fakeLoadPending, setFakeLoadPending] = useState(false);
   const { busStops, isLoading, error } = useBusStops();
   const [ratings, setRatings] = useState<number[]>([]);
