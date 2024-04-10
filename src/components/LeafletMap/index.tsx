@@ -55,27 +55,25 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ className, routeFilters }) => {
   } else {
     return (
       // window !== undefined &&
-      !busStopsLoading && (
-        <CustomMap className={className}>
-          {busStops.map((busStop: BusStop) => (
-            <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
-              <Popup className={styles.popup} closeButton={false}>
-                <CustomMapPin name={busStop.name ? busStop.name : 'Bus stop'} />
-              </Popup>
-            </Marker>
-          ))}
-          {routes
-            .filter((route) => {
-              const routeFilter = routeFilters.find(
-                (filter) => filter.routeName === route?.routeName
-              );
-              return routeFilter?.show;
-            })
-            .map((route, index) => {
-              return <MapRoute route={route} />;
-            })}
-        </CustomMap>
-      )
+      <CustomMap className={className}>
+        {busStops.map((busStop: BusStop) => (
+          <Marker position={[busStop.lat, busStop.lng]} icon={BUS_ICON}>
+            <Popup className={styles.popup} closeButton={false}>
+              <CustomMapPin name={busStop.name ? busStop.name : 'Bus stop'} />
+            </Popup>
+          </Marker>
+        ))}
+        {routes
+          .filter((route) => {
+            const routeFilter = routeFilters.find(
+              (filter) => filter.routeName === route?.routeName
+            );
+            return routeFilter?.show;
+          })
+          .map((route, index) => {
+            return <MapRoute route={route} />;
+          })}
+      </CustomMap>
     );
   }
 };

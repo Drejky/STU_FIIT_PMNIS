@@ -1,21 +1,19 @@
-import dynamic from 'next/dynamic';
-import styles from './index.module.css';
-import _, { set } from 'lodash';
-import CustomMap from '@/components/CustomMap';
-import useBusStops from '@/hooks/useBusStops';
-// import CustomMapPin from '@/components/CustomMapPin';
-// import { BUS_ICON } from '../../../lib/constants';
-import useBusIcon from '@/hooks/useBusIcon';
-import { BusStop } from '../../../lib/types';
+import React, { useEffect, useState } from 'react';
 import { GridLoader } from 'react-spinners';
-import { useState, useEffect } from 'react';
-import createBusIcon from '@/hooks/useBusIcon';
-import L from 'leaflet';
-import { Rating, Typography } from '@mui/material';
+import styles from './index.module.css';
+import { BUS_ICON, ROUTE_FILES, colours } from '../../../lib/constants';
+import { BusStop, Route } from '@/../lib/types';
+import getRouteFromStopNames from '@/../lib/hooks/getRouteFromStopNames';
+
+import useBusStops from '@/hooks/useBusStops';
+import CustomMap from '@/components/CustomMap';
+import dynamic from 'next/dynamic';
 import CustomButton from '@/components/CustomButton';
 import Loading from '@/components/Loading';
-import { useRouter } from 'next/router';
-
+import _ from 'lodash';
+// import MapRoute from '@/components/MapRoute';
+import { Rating, Typography } from '@mui/material';
+import test from 'node:test';
 const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
   ssr: false,
 });
@@ -32,16 +30,40 @@ const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), {
 const CustomMapPin = dynamic(() => import('@/components/CustomMapPin'), {
   ssr: false,
 });
+const MapRoute = dynamic(() => import('@/components/MapRoute'), {
+  ssr: false,
+});
 
 const grafikonPage = () => {
   const [fakeLoad, setFakeLoad] = useState(false);
   const [fakeLoadPending, setFakeLoadPending] = useState(false);
-  const { busStops, isLoading, error } = useBusStops();
   const [ratings, setRatings] = useState<number[]>([]);
   const [busDetailIframe, setBusDetailIframe] = useState(false);
   const [grafikonDetailIframe, setGrafikonDetailIframe] = useState(false);
+  const [testRoute, setTestRoute] = useState<Route[] | null>(null);
 
-  const router = useRouter();
+  const { busStops, isLoading, error } = useBusStops();
+
+  useEffect(() => {
+    if (!isLoading) {
+      const randomRoutes = _.range(5).map((foo) => {
+        const randomStopNames = [
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+          busStops[Math.floor(Math.random() * busStops.length) + 1]?.name,
+        ];
+
+        return getRouteFromStopNames(busStops, randomStopNames, '1');
+      });
+
+      setTestRoute(randomRoutes);
+    }
+  }, [isLoading, busStops]);
+
   if (isLoading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
   if (fakeLoad) {
@@ -108,6 +130,9 @@ const grafikonPage = () => {
                       </Popup>
                     </CustomMarker>
                   ))}
+                  {testRoute?.map((route, index) => {
+                    return <MapRoute route={route} />;
+                  })}
                 </CustomMap>
               </div>
             </div>
