@@ -35,7 +35,7 @@ const MapRoute = dynamic(() => import('@/components/MapRoute'), {
 });
 
 const grafikonPage = () => {
-  const [fakeLoad, setFakeLoad] = useState(false);
+  const [fakeLoad, setFakeLoad] = useState(true);
   const [fakeLoadPending, setFakeLoadPending] = useState(false);
   const [ratings, setRatings] = useState<number[]>([]);
   const [busDetailIframe, setBusDetailIframe] = useState(false);
@@ -81,7 +81,7 @@ const grafikonPage = () => {
             setFakeLoadPending(true);
             setTimeout(() => {
               setFakeLoad(false);
-            }, 1);
+            }, 2000);
           }}
         >
           Generuj

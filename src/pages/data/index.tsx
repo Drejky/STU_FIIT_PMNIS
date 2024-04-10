@@ -55,7 +55,9 @@ const DataTable = ({ data }: any) => {
                 <td className={styles.td}>{data.stop}</td>
                 <td className={styles.td}>{data.enter}</td>
                 <td className={styles.td}>{data.exit}</td>
-                <td className={styles.td}>{data.load}</td>
+                <td className={styles.td}>
+                  {data.load} ({Math.floor(Math.random() * 100)}%)
+                </td>
               </tr>
             ))}
           </tbody>
