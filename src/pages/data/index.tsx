@@ -262,6 +262,15 @@ const HomePage = () => {
         setImportData(data.map((log: any) => ({ ...log, edited: false })))
       );
   }, []);
+
+  useEffect(() => {
+    Cookies.set('importData', JSON.stringify(importData));
+  }, [importData]);
+
+  useEffect(() => {
+    Cookies.set('data', JSON.stringify(data));
+  }, [data]);
+
   const [editable, setEditable] = useState(false);
   return (
     <div className={styles.container}>
