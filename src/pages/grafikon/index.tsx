@@ -16,22 +16,26 @@ import { Rating, Typography } from '@mui/material';
 import test from 'node:test';
 const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 const Marker = dynamic(
   () => import('react-leaflet').then((mod) => mod.Marker),
-  { ssr: false }
+  { ssr: false, loading: () => <div>Loading...</div> }
 );
 
 const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 const CustomMapPin = dynamic(() => import('@/components/CustomMapPin'), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 const MapRoute = dynamic(() => import('@/components/MapRoute'), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 const grafikonPage = () => {
@@ -41,6 +45,7 @@ const grafikonPage = () => {
   const [busDetailIframe, setBusDetailIframe] = useState(false);
   const [grafikonDetailIframe, setGrafikonDetailIframe] = useState(false);
   const [testRoute, setTestRoute] = useState<Route[] | null>(null);
+  const [currentGrafikon, setCurrentGrafikon] = useState<number>(1);
 
   const { busStops, isLoading, error } = useBusStops();
 
@@ -81,7 +86,7 @@ const grafikonPage = () => {
             setFakeLoadPending(true);
             setTimeout(() => {
               setFakeLoad(false);
-            }, 2000);
+            }, 1);
           }}
         >
           Generuj
@@ -152,7 +157,12 @@ const grafikonPage = () => {
                 }}
               />
             </div>
-            <CustomButton onClick={() => setGrafikonDetailIframe(true)}>
+            <CustomButton
+              onClick={() => {
+                setCurrentGrafikon(foo + 1);
+                setGrafikonDetailIframe(true);
+              }}
+            >
               Detail Grafikonu
             </CustomButton>{' '}
           </div>
@@ -170,7 +180,10 @@ const grafikonPage = () => {
         )}
         {grafikonDetailIframe && (
           <div className={styles.iframeModal}>
-            <iframe src="/grafikonDetail" title="Bus Detail"></iframe>
+            <iframe
+              src={`/grafikonDetail/${currentGrafikon}`}
+              title="Bus Detail"
+            ></iframe>
             <CustomButton
               onClick={() => setGrafikonDetailIframe(false)}
               className={styles.whiteButton}

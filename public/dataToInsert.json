@@ -1,0 +1,102 @@
+[
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 2,
+    "stop": "Kočišské, rázcestie",
+    "enter": 198,
+    "exit": 392,
+    "confidence": 94.97435905937677,
+    "time": "8:6"
+  },
+  {
+    "groundTruth": 3,
+    "load": 2,
+    "route": 1,
+    "stop": "Kollárova",
+    "enter": 417,
+    "exit": 378,
+    "confidence": 59.07665158982607,
+    "time": "9:30"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 4,
+    "stop": "Saleziánska",
+    "enter": 92,
+    "exit": 295,
+    "confidence": 94.3470675099505,
+    "time": "24:60"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 3,
+    "stop": "Okružná",
+    "enter": 282,
+    "exit": 33,
+    "confidence": 93.29719533210117,
+    "time": "24:21"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 2,
+    "stop": "Doliny",
+    "enter": 329,
+    "exit": 150,
+    "confidence": 88.09631720103903,
+    "time": "15:15"
+  },
+  {
+    "groundTruth": 3,
+    "load": 1,
+    "route": 2,
+    "stop": "Hlboká",
+    "enter": 66,
+    "exit": 80,
+    "confidence": 33.8431044752127,
+    "time": "14:57"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 5,
+    "stop": "Gorkého, ZŠ",
+    "enter": 4,
+    "exit": 445,
+    "confidence": 89.6412743354863,
+    "time": "17:45"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "Suchovská ul.",
+    "enter": 231,
+    "exit": 221,
+    "confidence": 89.54910145116956,
+    "time": "18:10"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 5,
+    "stop": "Špačinská, Obch. akadémia",
+    "enter": 160,
+    "exit": 42,
+    "confidence": 86.75199372276143,
+    "time": "19:60"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 7,
+    "stop": "Unknown",
+    "enter": 347,
+    "exit": 165,
+    "confidence": 80.81752290763767,
+    "time": "4:5"
+  }
+]

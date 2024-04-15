@@ -10,7 +10,7 @@ import { Route } from '../../../lib/types';
 
 const DynamicLeafletMap = dynamic(
   () => import('@/components/LeafletMap'),
-  { ssr: false } // This will disable server-side rendering for the LeafletMap component
+  { ssr: false, loading: () => <div>Loading...</div> } // This will disable server-side rendering for the LeafletMap component
 );
 
 const mapPage = () => {

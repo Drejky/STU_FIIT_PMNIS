@@ -6,12 +6,12 @@ import classNames from 'classnames';
 
 const MapContainer = dynamic(
   () => import('react-leaflet').then((mod) => mod.MapContainer),
-  { ssr: false }
+  { ssr: false, loading: () => <div>Loading...</div> }
 );
 
 const TileLayer = dynamic(
   () => import('react-leaflet').then((mod) => mod.TileLayer),
-  { ssr: false }
+  { ssr: false, loading: () => <div>Loading...</div> }
 );
 
 export type CustomMapProps = {

@@ -1,0 +1,502 @@
+[
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 6,
+    "stop": "Dohnányho",
+    "enter": 158,
+    "exit": 355,
+    "confidence": 99.74876652993728,
+    "time": "2:10"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 3,
+    "stop": "Kukučínova",
+    "enter": 414,
+    "exit": 347,
+    "confidence": 81.08246758229635,
+    "time": "15:29"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 1,
+    "stop": "Boharyně, Trnava",
+    "enter": 48,
+    "exit": 276,
+    "confidence": 94.37682033712126,
+    "time": "4:57"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 4,
+    "stop": "Bulharská, Tatrachema",
+    "enter": 310,
+    "exit": 209,
+    "confidence": 84.49985171537911,
+    "time": "23:15"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 6,
+    "stop": "Trnava, odbočka Malé Babice",
+    "enter": 398,
+    "exit": 314,
+    "confidence": 97.98499814557675,
+    "time": "24:3"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "Botanická, Jednota",
+    "enter": 242,
+    "exit": 21,
+    "confidence": 88.6071664215178,
+    "time": "11:45"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 6,
+    "stop": "Nitrianska IKEA",
+    "enter": 368,
+    "exit": 140,
+    "confidence": 97.88512804266087,
+    "time": "3:51"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 6,
+    "stop": "Dohnányho",
+    "enter": 175,
+    "exit": 126,
+    "confidence": 87.970385496138,
+    "time": "11:4"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 6,
+    "stop": "T. Vansovej, Okružné nám.",
+    "enter": 415,
+    "exit": 188,
+    "confidence": 94.87512132064046,
+    "time": "20:8"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "Trstínska, Skladová",
+    "enter": 334,
+    "exit": 294,
+    "confidence": 98.53178350388079,
+    "time": "11:7"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 3,
+    "stop": "Bratislavská, Coburgova",
+    "enter": 275,
+    "exit": 280,
+    "confidence": 92.76642912199692,
+    "time": "12:21"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 1,
+    "stop": "Tamaškovičova",
+    "enter": 220,
+    "exit": 331,
+    "confidence": 97.52510960389117,
+    "time": "14:25"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 4,
+    "stop": "V. Clementisa",
+    "enter": 414,
+    "exit": 47,
+    "confidence": 87.0825494764348,
+    "time": "9:33"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "Unknown",
+    "enter": 157,
+    "exit": 198,
+    "confidence": 92.86033536259647,
+    "time": "5:8"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 1,
+    "stop": "Bratislavská, Coburgova",
+    "enter": 354,
+    "exit": 364,
+    "confidence": 81.9401660021603,
+    "time": "13:50"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 5,
+    "stop": "Štefana Moyzesa",
+    "enter": 437,
+    "exit": 19,
+    "confidence": 85.68497465707624,
+    "time": "8:52"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 2,
+    "stop": "Spartakovská",
+    "enter": 123,
+    "exit": 50,
+    "confidence": 87.13025698957567,
+    "time": "21:4"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 2,
+    "stop": "Záhradkárska osada",
+    "enter": 212,
+    "exit": 33,
+    "confidence": 96.5555685619681,
+    "time": "19:42"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 1,
+    "stop": "Prednádražie, G. Dusíka",
+    "enter": 312,
+    "exit": 375,
+    "confidence": 81.60232080614664,
+    "time": "16:37"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 5,
+    "stop": "Špačinská, Obch. akadémia",
+    "enter": 295,
+    "exit": 446,
+    "confidence": 89.61693233142573,
+    "time": "17:59"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 6,
+    "stop": "Kukučínova",
+    "enter": 94,
+    "exit": 15,
+    "confidence": 81.95306024948816,
+    "time": "23:38"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 1,
+    "stop": "Trstínska, Cukrová",
+    "enter": 249,
+    "exit": 314,
+    "confidence": 88.06813832073794,
+    "time": "2:7"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 7,
+    "stop": "Linčianska",
+    "enter": 371,
+    "exit": 238,
+    "confidence": 86.12872311556877,
+    "time": "21:19"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 6,
+    "stop": "Strojárenská, SACHS",
+    "enter": 96,
+    "exit": 295,
+    "confidence": 84.77898493265927,
+    "time": "23:15"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 5,
+    "stop": "Botanická, Jednota",
+    "enter": 290,
+    "exit": 257,
+    "confidence": 88.80886302481443,
+    "time": "2:38"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 3,
+    "stop": "Olympijská",
+    "enter": 148,
+    "exit": 107,
+    "confidence": 84.17952259743761,
+    "time": "23:61"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 2,
+    "stop": "Nerudova",
+    "enter": 284,
+    "exit": 70,
+    "confidence": 92.33220610806627,
+    "time": "11:29"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 5,
+    "stop": "Záhradkárska osada",
+    "enter": 260,
+    "exit": 327,
+    "confidence": 82.22848518994024,
+    "time": "21:1"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 5,
+    "stop": "Hlboká",
+    "enter": 321,
+    "exit": 243,
+    "confidence": 83.1028719734067,
+    "time": "19:15"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "Trnava, Jamice",
+    "enter": 235,
+    "exit": 69,
+    "confidence": 87.12003701846692,
+    "time": "8:34"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 2,
+    "stop": "Hospodárska",
+    "enter": 449,
+    "exit": 236,
+    "confidence": 84.85430353618536,
+    "time": "11:37"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 3,
+    "stop": "Kočišské",
+    "enter": 176,
+    "exit": 114,
+    "confidence": 92.64607336820859,
+    "time": "3:50"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 4,
+    "stop": "Modranka, Pošta",
+    "enter": 408,
+    "exit": 207,
+    "confidence": 95.46841137529465,
+    "time": "7:30"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 3,
+    "stop": "Bulharská, Potraviny",
+    "enter": 274,
+    "exit": 340,
+    "confidence": 92.34962587600924,
+    "time": "3:61"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 6,
+    "stop": "Zelený kríčok",
+    "enter": 204,
+    "exit": 182,
+    "confidence": 91.29252334859974,
+    "time": "13:22"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 6,
+    "stop": "Tamaškovičova",
+    "enter": 200,
+    "exit": 225,
+    "confidence": 80.82610406573197,
+    "time": "13:18"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 2,
+    "stop": "Kočišské",
+    "enter": 314,
+    "exit": 280,
+    "confidence": 96.66922680961164,
+    "time": "21:32"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 4,
+    "stop": "T. Vansovej, cintorín",
+    "enter": 420,
+    "exit": 16,
+    "confidence": 81.37260866109621,
+    "time": "7:61"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 7,
+    "stop": "Nemečanka",
+    "enter": 279,
+    "exit": 197,
+    "confidence": 91.70042037023015,
+    "time": "10:40"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 6,
+    "stop": "V. Clementisa",
+    "enter": 304,
+    "exit": 214,
+    "confidence": 97.71965921734962,
+    "time": "25:22"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "A. Kmeťa",
+    "enter": 203,
+    "exit": 429,
+    "confidence": 85.88113826114038,
+    "time": "6:37"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 3,
+    "stop": "Unknown",
+    "enter": 216,
+    "exit": 351,
+    "confidence": 95.96293066754146,
+    "time": "22:27"
+  },
+  {
+    "groundTruth": 1,
+    "load": 1,
+    "route": 5,
+    "stop": "Trstínska, Skladová",
+    "enter": 22,
+    "exit": 67,
+    "confidence": 87.76928952380041,
+    "time": "18:5"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 4,
+    "stop": "Kamenná cesta, Tibora Kružliaka",
+    "enter": 106,
+    "exit": 377,
+    "confidence": 99.99092919508699,
+    "time": "10:42"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 3,
+    "stop": "Nová",
+    "enter": 329,
+    "exit": 416,
+    "confidence": 83.61733679666168,
+    "time": "13:19"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 6,
+    "stop": "Trstínska, Skladová",
+    "enter": 182,
+    "exit": 284,
+    "confidence": 97.87749056711039,
+    "time": "7:24"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 5,
+    "stop": "Sibírska",
+    "enter": 303,
+    "exit": 37,
+    "confidence": 83.74341367332428,
+    "time": "8:32"
+  },
+  {
+    "groundTruth": 3,
+    "load": 3,
+    "route": 6,
+    "stop": "Družba",
+    "enter": 355,
+    "exit": 159,
+    "confidence": 81.28547416883188,
+    "time": "9:28"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 3,
+    "stop": "A. Kmeťa",
+    "enter": 293,
+    "exit": 277,
+    "confidence": 99.08405797518176,
+    "time": "6:19"
+  },
+  {
+    "groundTruth": 2,
+    "load": 2,
+    "route": 2,
+    "stop": "Koniarekova, ŽOS",
+    "enter": 206,
+    "exit": 320,
+    "confidence": 85.27079090195909,
+    "time": "12:22"
+  }
+]

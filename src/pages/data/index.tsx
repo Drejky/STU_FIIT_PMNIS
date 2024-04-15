@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 import styles from './index.module.css';
-import { Bar, Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,10 +13,10 @@ import {
   LineElement,
 } from 'chart.js';
 import _ from 'lodash';
-import { faker } from '@faker-js/faker';
 import useBusStops from '@/hooks/useBusStops';
 import Loading from '@/components/Loading';
 import Image from 'next/image';
+import Cookies from 'js-cookie';
 
 ChartJS.register(
   CategoryScale,
@@ -30,8 +29,22 @@ ChartJS.register(
   LineElement
 );
 
-const DataTable = ({ data }: any) => {
+const DataTable = ({
+  data,
+  children,
+  editable,
+  setData,
+  imported,
+  importData,
+  setImportData,
+  classified,
+}: any) => {
   const { busStops, isLoading, error } = useBusStops();
+  useEffect(() => {
+    Cookies.set('importData', JSON.stringify(importData));
+    Cookies.set('data', JSON.stringify(data));
+  }, [importData, data]);
+
   if (isLoading) return <Loading />;
   return (
     <div>
@@ -49,14 +62,73 @@ const DataTable = ({ data }: any) => {
       <div className={styles.tbodyContainer}>
         <table className={styles.table}>
           <tbody className={styles.tbody}>
-            {data.map((data: any, i: number) => (
+            {imported &&
+              importData.map((log: any, i: number) => (
+                <tr key={i} className={styles.tr}>
+                  <td className={styles.td}>{log.route}</td>
+                  <td className={styles.td}>{log.stop}</td>
+                  <td className={styles.td}>{log.enter}</td>
+                  <td className={styles.td}>{log.exit}</td>
+                  <td className={styles.td}>
+                    {classified &&
+                      (editable ? (
+                        <>
+                          <input
+                            type="text"
+                            value={`${importData[i].load}`}
+                            onChange={(e) => {
+                              setImportData(
+                                importData.map((item, index) =>
+                                  index === i
+                                    ? {
+                                        ...item,
+                                        load: parseInt(e.target.value),
+                                        edited: true,
+                                      }
+                                    : item
+                                )
+                              );
+                            }}
+                          />
+                          {Math.floor(log.confidence)}%
+                        </>
+                      ) : (
+                        `${log.load} (${Math.floor(log.confidence)}%)`
+                      ))}
+                  </td>
+                </tr>
+              ))}
+            {data.map((log: any, i: number) => (
               <tr key={i} className={styles.tr}>
-                <td className={styles.td}>{data.route}</td>
-                <td className={styles.td}>{data.stop}</td>
-                <td className={styles.td}>{data.enter}</td>
-                <td className={styles.td}>{data.exit}</td>
+                <td className={styles.td}>{log.route}</td>
+                <td className={styles.td}>{log.stop}</td>
+                <td className={styles.td}>{log.enter}</td>
+                <td className={styles.td}>{log.exit}</td>
                 <td className={styles.td}>
-                  {data.load} ({Math.floor(Math.random() * 100)}%)
+                  {editable ? (
+                    <>
+                      <input
+                        type="text"
+                        value={`${data[i].load}`}
+                        onChange={(e) => {
+                          setData(
+                            data.map((item, index) =>
+                              index === i
+                                ? {
+                                    ...item,
+                                    load: parseInt(e.target.value),
+                                    edited: true,
+                                  }
+                                : item
+                            )
+                          );
+                        }}
+                      />
+                      {Math.floor(log.confidence)}%
+                    </>
+                  ) : (
+                    `${log.load} (${Math.floor(log.confidence)}%)`
+                  )}
                 </td>
               </tr>
             ))}
@@ -81,9 +153,10 @@ const HomePage = () => {
 
   useEffect(() => {
     if (!isLoading) {
-      const newFakeData = _.range(50).map(() => {
+      const newFakeData = _.range(10).map(() => {
         const enter = Math.round(Math.random() * 450 + 1);
         let load;
+
         if (enter > 300) {
           load = Math.random() < 0.9 ? 3 : Math.round(Math.random() * 2 + 1);
         } else if (enter >= 150) {
@@ -91,46 +164,34 @@ const HomePage = () => {
         } else {
           load = Math.random() < 0.9 ? 1 : Math.round(Math.random() * 2 + 1);
         }
+
+        let grouindTruth =
+          Math.random() < 0.8 ? load : Math.round(Math.random() * 2 + 1);
+
         return {
+          groundTruth: grouindTruth,
+          // load,
+          load: load,
           route: Math.round(Math.random() * 6 + 1),
           stop:
             busStops[Math.round(Math.random() * (busStops.length - 1))].name ||
             'Unknown',
           enter: enter,
           exit: Math.round(Math.random() * 450 + 1),
-          load: load,
+          confidence:
+            load == grouindTruth
+              ? 80 + Math.random() * 20
+              : 30 + Math.random() * 70 - 20,
+          time: `${Math.round(Math.random() * 24 + 1)}:${Math.round(
+            Math.random() * 60 + 1
+          )}`,
+          edited: false,
         };
       });
       setFakeData(newFakeData);
+      console.log(newFakeData);
     }
   }, [isLoading, busStops]);
-
-  const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [
-      {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
 
   const combinedData = fakeData.map((data) => ({
     enter: data.enter,
@@ -176,20 +237,26 @@ const HomePage = () => {
     indexAxis: 'x',
   };
 
-  const options = {
-    indexAxis: 'y',
-    elements: {
-      bar: {
-        borderWidth: 2,
-      },
-    },
-    // responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-    },
-  };
+  const [data, setData] = useState(null);
+  const [importData, setImportData] = useState(null);
+  const [imported, setImported] = useState(false);
+  const [classified, setClassified] = useState(false);
+
+  useEffect(() => {
+    fetch('/dataBeforeInsert.json')
+      .then((response) => response.json())
+      .then((data) =>
+        setData(data.map((log: any) => ({ ...log, edited: false })))
+      );
+  }, []);
+  useEffect(() => {
+    fetch('/dataToInsert.json')
+      .then((response) => response.json())
+      .then((data) =>
+        setImportData(data.map((log: any) => ({ ...log, edited: false })))
+      );
+  }, []);
+  const [editable, setEditable] = useState(false);
   return (
     <div className={styles.container}>
       <p className={styles.description}>
@@ -199,13 +266,34 @@ const HomePage = () => {
         možné ju opraviť, táto informácia bude použitá pre vylepšenie AI
       </p>
       <div className={styles.dataControls}>
-        <button className={styles.button}>Import new data</button>
-        <button className={styles.button}>Klasifikuj vyťaženosť</button>
-        <button className={styles.button}>Edituj vyťaženosť</button>
+        <button className={styles.button} onClick={() => setImported(true)}>
+          Import new data
+        </button>
+        <button className={styles.button} onClick={() => setClassified(true)}>
+          Klasifikuj vyťaženosť
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => {
+            setEditable(!editable);
+          }}
+        >
+          Zapni/Vypni editovanie vyťaženosti
+        </button>
         <button className={styles.button}>Hodnotenie</button>
       </div>
 
-      {fakeData && <DataTable data={fakeData} />}
+      {fakeData && (
+        <DataTable
+          data={data}
+          editable={editable}
+          setData={setData}
+          importData={importData}
+          setImportData={setImportData}
+          imported={imported}
+          classified={classified}
+        />
+      )}
       <div className={styles.graphContainer}>
         <div className={styles.graph}>
           <Line data={areaGraphData} options={areaGraphOptions as any} />

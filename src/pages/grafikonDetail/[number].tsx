@@ -1,5 +1,5 @@
 // Boilerplate nextjs page
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../grafikon/index.module.css';
 import graphStyles from '../../pages/data/index.module.css';
 import newStyles from './index.module.css';
@@ -25,6 +25,7 @@ import {
   PointElement,
   LineElement,
 } from 'chart.js';
+import { useRouter } from 'next/router';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -35,25 +36,34 @@ ChartJS.register(
   PointElement,
   LineElement
 );
-
+// import CustomMapPin from '@/components/CustomMapPin';
 const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 const Marker = dynamic(
   () => import('react-leaflet').then((mod) => mod.Marker),
-  { ssr: false }
+  { ssr: false, loading: () => <div>Loading...</div> }
 );
 
 const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 const CustomMapPin = dynamic(() => import('@/components/CustomMapPin'), {
   ssr: false,
+  loading: () => <div>Loading...</div>,
 });
 
 const GrafikonMap = ({ name }: any) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // Set isClient to true in useEffect to ensure it's only run after component has mounted
+    setIsClient(true);
+  }, []);
   // Changed component name to GrafikonMap
   const { busStops, isLoading, error } = useBusStops();
   if (isLoading || error) return <Loading />;
@@ -77,9 +87,11 @@ const GrafikonMap = ({ name }: any) => {
                 {busStops.map((busStop: BusStop) => (
                   <CustomMarker position={[busStop.lat, busStop.lng]}>
                     <Popup className={styles.popup} closeButton={false}>
-                      <CustomMapPin
-                        name={busStop.name ? busStop.name : 'Bus stop'}
-                      />
+                      {isClient && (
+                        <CustomMapPin
+                          name={busStop.name ? busStop.name : 'Bus stop'}
+                        />
+                      )}
                     </Popup>
                   </CustomMarker>
                 ))}
@@ -92,8 +104,10 @@ const GrafikonMap = ({ name }: any) => {
 };
 
 const GrafikonDetailPage: React.FC = () => {
-  const { busStops, isLoading, error } = useBusStops();
+  const router = useRouter();
+  const { number: fuck } = router.query;
 
+  const { busStops, isLoading, error } = useBusStops();
   const data = {
     labels: ['Vytazenost', 'Nastup', 'Vystup', 'Cas'],
     datasets: [
@@ -126,13 +140,13 @@ const GrafikonDetailPage: React.FC = () => {
       typeof window !== 'undefined' && (
         <>
           <div className={newStyles.maps}>
-            <GrafikonMap name="2" />
+            <GrafikonMap name={fuck} />
             <GrafikonMap name="grecka" />
           </div>
           <div className={newStyles.conteiner}>
             <div className={newStyles.container}>
               <h2>Counterfactual examples</h2>
-              <p>Grafikon 2, Linka 1:</p>
+              <p>Grafikon {fuck}, Linka 1:</p>
               <p>
                 Ak by vytazenost zastavky Kollárova bola 1, linka by isla cez
                 zastavku Bernolákova
