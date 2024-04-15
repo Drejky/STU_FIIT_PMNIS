@@ -17,6 +17,7 @@ import useBusStops from '@/hooks/useBusStops';
 import Loading from '@/components/Loading';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 ChartJS.register(
   CategoryScale,
@@ -55,7 +56,7 @@ const DataTable = ({
             <th className={styles.th}>Zastávka</th>
             <th className={styles.th}>Nástup</th>
             <th className={styles.th}>Výstup</th>
-            <th className={styles.th}>Vyťaženosť</th>
+            <th className={styles.th}>Vyťaženosť (istota)</th>
           </tr>
         </thead>
       </table>
@@ -245,6 +246,7 @@ const HomePage = () => {
   const [importData, setImportData] = useState(null);
   const [imported, setImported] = useState(false);
   const [classified, setClassified] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     fetch('/dataBeforeInsert.json')
@@ -284,7 +286,14 @@ const HomePage = () => {
         >
           Zapni/Vypni editovanie vyťaženosti
         </button>
-        <button className={styles.button}>Hodnotenie</button>
+        <button
+          className={styles.button}
+          onClick={() => {
+            router.push('/hodnotenie');
+          }}
+        >
+          Hodnotenie
+        </button>
       </div>
 
       {fakeData && (

@@ -46,6 +46,7 @@ const grafikonPage = () => {
   const [grafikonDetailIframe, setGrafikonDetailIframe] = useState(false);
   const [testRoute, setTestRoute] = useState<Route[] | null>(null);
   const [currentGrafikon, setCurrentGrafikon] = useState<number>(1);
+  const [ratingsSubmitted, setRatingsSubmitted] = useState(false);
 
   const { busStops, isLoading, error } = useBusStops();
 
@@ -141,22 +142,24 @@ const grafikonPage = () => {
                 </CustomMap>
               </div>
             </div>
-            <div className={styles.rating}>
-              <Typography>Rate grafikon</Typography>
-              <Rating
-                name="simple-controlled"
-                value={ratings[foo]}
-                onChange={(event, newValue) => {
-                  if (typeof newValue === 'number') {
-                    setRatings(
-                      ratings.map((item, index) =>
-                        index === foo ? newValue : item
-                      )
-                    );
-                  }
-                }}
-              />
-            </div>
+            {!ratingsSubmitted && (
+              <div className={styles.rating}>
+                <Typography>Rate grafikon</Typography>
+                <Rating
+                  name="simple-controlled"
+                  value={ratings[foo]}
+                  onChange={(event, newValue) => {
+                    if (typeof newValue === 'number') {
+                      setRatings(
+                        ratings.map((item, index) =>
+                          index === foo ? newValue : item
+                        )
+                      );
+                    }
+                  }}
+                />
+              </div>
+            )}
             <CustomButton
               onClick={() => {
                 setCurrentGrafikon(foo + 1);
@@ -167,6 +170,13 @@ const grafikonPage = () => {
             </CustomButton>{' '}
           </div>
         ))}
+        {!ratingsSubmitted ? (
+          <CustomButton onClick={() => setRatingsSubmitted(true)}>
+            Odošli hodnotenia
+          </CustomButton>
+        ) : (
+          <p>Ďakujeme</p>
+        )}
         {busDetailIframe && (
           <div className={styles.iframeModal}>
             <iframe src="/busDetail" title="Bus Detail"></iframe>
