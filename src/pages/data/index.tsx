@@ -90,8 +90,10 @@ const DataTable = ({
                               );
                             }}
                           />
-                          {Math.floor(log.confidence)}%
+                          {!log.edited && `${Math.floor(log.confidence)}%`}
                         </>
+                      ) : log.edited ? (
+                        `${log.load}`
                       ) : (
                         `${log.load} (${Math.floor(log.confidence)}%)`
                       ))}
