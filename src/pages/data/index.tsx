@@ -328,7 +328,7 @@ const HomePage = () => {
       <div className={styles.graphContainer}>
         <div className={styles.graph}>
           <Image
-            src="/images/decisionFLow.png"
+            src="/images/decisionFlow.png"
             layout="fill"
             objectFit="contain"
           />
