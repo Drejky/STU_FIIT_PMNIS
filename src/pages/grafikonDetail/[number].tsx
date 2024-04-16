@@ -143,7 +143,7 @@ const GrafikonDetailPage: React.FC = () => {
             <GrafikonMap name={fuck} />
             <GrafikonMap name="grecka" />
           </div>
-          <div className={newStyles.conteiner}>
+          {/* <div className={newStyles.conteiner}>
             <div className={newStyles.container}>
               <h2>Counterfactual examples</h2>
               <p>Grafikon {fuck}, Linka 1:</p>
@@ -155,7 +155,7 @@ const GrafikonDetailPage: React.FC = () => {
                 <Bar data={data} options={options} />
               </div>
             </div>
-          </div>
+          </div> */}
         </>
       )
     );

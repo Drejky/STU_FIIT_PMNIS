@@ -44,6 +44,7 @@ const DataTable = ({
   useEffect(() => {
     Cookies.set('importData', JSON.stringify(importData));
     Cookies.set('data', JSON.stringify(data));
+    Cookies.set('imported', 'false');
   }, [importData, data]);
 
   if (isLoading) return <Loading />;
@@ -194,7 +195,6 @@ const HomePage = () => {
         };
       });
       setFakeData(newFakeData);
-      console.log(newFakeData);
     }
   }, [isLoading, busStops]);
 
@@ -281,7 +281,13 @@ const HomePage = () => {
         možné ju opraviť, táto informácia bude použitá pre vylepšenie AI
       </p>
       <div className={styles.dataControls}>
-        <button className={styles.button} onClick={() => setImported(true)}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            setImported(true);
+            Cookies.set('imported', 'true');
+          }}
+        >
           Import new data
         </button>
         <button className={styles.button} onClick={() => setClassified(true)}>

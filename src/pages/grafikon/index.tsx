@@ -14,6 +14,7 @@ import _ from 'lodash';
 // import MapRoute from '@/components/MapRoute';
 import { Rating, Typography } from '@mui/material';
 import test from 'node:test';
+import Cookies from 'js-cookie';
 const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
   ssr: false,
   loading: () => <div>Loading...</div>,
@@ -44,11 +45,35 @@ const grafikonPage = () => {
   const [ratings, setRatings] = useState<number[]>([]);
   const [busDetailIframe, setBusDetailIframe] = useState(false);
   const [grafikonDetailIframe, setGrafikonDetailIframe] = useState(false);
-  const [testRoute, setTestRoute] = useState<Route[] | null>(null);
   const [currentGrafikon, setCurrentGrafikon] = useState<number>(1);
   const [ratingsSubmitted, setRatingsSubmitted] = useState(false);
+  const [testRoute, setTestRoute] = useState<Route[] | null>(null);
+  const [realRoutes, setRealRoutes] = useState<Route[] | null>(null);
+  const [goodEnding, setGoodEnding] = useState(true);
 
   const { busStops, isLoading, error } = useBusStops();
+
+  useEffect(() => {
+    const raw = Cookies.get('importData');
+    const imported = Cookies.get('imported');
+    if (raw) {
+      try {
+        const data = JSON.parse(raw);
+
+        if (imported == 'true') {
+          data.map((item: any) => {
+            if (item.groundTruth !== item.load && item.edited == false) {
+              setGoodEnding(false);
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error parsing JSON from "importData" cookie:', error);
+      }
+    } else {
+      console.log('"importData" cookie not found');
+    }
+  }, []);
 
   useEffect(() => {
     if (!isLoading) {
@@ -69,6 +94,26 @@ const grafikonPage = () => {
       setTestRoute(randomRoutes);
     }
   }, [isLoading, busStops]);
+
+  useEffect(() => {
+    // Fetch scraped route data and map it to fetched bus stops
+    const promises = ROUTE_FILES.map(
+      (route: { fileName: string; routeName: string }) =>
+        fetch(`/routes/${route.fileName}`)
+          .then((response) => response.json())
+          .then((order) =>
+            getRouteFromStopNames(busStops, order, route.routeName)
+          )
+    );
+
+    // Wait for all fetches to complete
+    Promise.all(promises)
+      .then((coordinatesList: (Route | null)[]) => {
+        const filteredCoordinatesList = coordinatesList.filter(Boolean);
+        setRealRoutes(filteredCoordinatesList);
+      })
+      .catch((error) => console.error(error));
+  }, [busStops]);
 
   if (isLoading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
@@ -122,11 +167,6 @@ const grafikonPage = () => {
               </div>
               <div className={styles.mapContainer}>
                 <CustomMap className={styles.map}>
-                  {/* <CustomMarker position={[busStops[5].lat, busStops[5].lng]}>
-                  <Popup>
-                    <CustomMapPin name={busStops[5].name} />
-                  </Popup>
-                </CustomMarker> */}
                   {busStops.map((busStop: BusStop) => (
                     <CustomMarker position={[busStop.lat, busStop.lng]}>
                       <Popup className={styles.popup} closeButton={false}>
@@ -136,9 +176,17 @@ const grafikonPage = () => {
                       </Popup>
                     </CustomMarker>
                   ))}
-                  {testRoute?.map((route, index) => {
+
+                  {goodEnding
+                    ? realRoutes?.map((route, index) => {
+                        return <MapRoute route={route} />;
+                      })
+                    : testRoute?.map((route, index) => {
+                        return <MapRoute route={route} />;
+                      })}
+                  {/* {realRoutes?.map((route, index) => {
                     return <MapRoute route={route} />;
-                  })}
+                  })} */}
                 </CustomMap>
               </div>
             </div>

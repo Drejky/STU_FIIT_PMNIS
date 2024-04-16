@@ -194,7 +194,6 @@ const HomePage = () => {
         };
       });
       setFakeData(newFakeData);
-      console.log(newFakeData);
     }
   }, [isLoading, busStops]);
 
@@ -275,10 +274,11 @@ const HomePage = () => {
   return (
     <div className={styles.container}>
       <p className={styles.description}>
-      Trnavikon je aplikácia navrhnutá pre mesto Trnava pre prácu s dátami z palubných počítačov z vozidiel 
-      mestskej hromadnej dopravy. Dáta klasifikuje do troch kategórií vyťaženosti pomocou AI. Klasifikované 
-      dáta služia pri návrhu nových grafikonov. Trnavikon sa adaptuje a učí sa navrhovať lepšie grafikony 
-      podľa používateľovho hodnotenia.  
+        Trnavikon je aplikácia navrhnutá pre mesto Trnava pre prácu s dátami z
+        palubných počítačov z vozidiel mestskej hromadnej dopravy. Dáta
+        klasifikuje do troch kategórií vyťaženosti pomocou AI. Klasifikované
+        dáta služia pri návrhu nových grafikonov. Trnavikon sa adaptuje a učí sa
+        navrhovať lepšie grafikony podľa používateľovho hodnotenia.
       </p>
       <div className={styles.dataControls}>
         <button className={styles.button} onClick={() => router.push('/data')}>
@@ -295,7 +295,6 @@ const HomePage = () => {
         </button>
       </div>
 
-      
       <div className={styles.graphContainer}>
         <div className={styles.graph}>
           <Line data={areaGraphData} options={areaGraphOptions as any} />

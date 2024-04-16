@@ -4,7 +4,6 @@ import { colours } from '../../../lib/constants';
 
 const MapRoute = ({ route }: { route: Route | null }) => {
   if (!route) return null;
-  console.log(route);
   const colour = colours[Math.floor(Math.random() * colours.length)];
   return (
     <div>
