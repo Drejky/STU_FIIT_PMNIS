@@ -96,23 +96,27 @@ const grafikonPage = () => {
   }, [isLoading, busStops]);
 
   useEffect(() => {
-    // Fetch scraped route data and map it to fetched bus stops
-    const promises = ROUTE_FILES.map(
-      (route: { fileName: string; routeName: string }) =>
-        fetch(`/routes/${route.fileName}`)
-          .then((response) => response.json())
-          .then((order) =>
-            getRouteFromStopNames(busStops, order, route.routeName)
-          )
-    );
+    // const promises = ROUTE_FILES.map(
+    //   (route: { fileName: string; routeName: string }) =>
+    //     fetch(`/routes/${route.fileName}`)
+    //       .then((response) => response.json())
+    //       .then((order) =>
+    //         getRouteFromStopNames(busStops, order, route.routeName)
+    //       )
+    // );
 
-    // Wait for all fetches to complete
-    Promise.all(promises)
-      .then((coordinatesList: (Route | null)[]) => {
-        const filteredCoordinatesList = coordinatesList.filter(Boolean);
-        setRealRoutes(filteredCoordinatesList);
-      })
-      .catch((error) => console.error(error));
+    // // Wait for all fetches to complete
+    // Promise.all(promises)
+    //   .then((coordinatesList: (Route | null)[]) => {
+    //     const filteredCoordinatesList = coordinatesList.filter(Boolean);
+    //     setRealRoutes(filteredCoordinatesList);
+    //   })
+    //   .catch((error) => console.error(error));
+    fetch('/realRoutes.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setRealRoutes(data);
+      });
   }, [busStops]);
 
   if (isLoading) return <Loading />;

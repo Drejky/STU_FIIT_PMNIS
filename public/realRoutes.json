@@ -1,0 +1,1057 @@
+[
+  {
+    "coordinates": [
+      {
+        "lat": 48.3569673,
+        "lng": 17.5714835,
+        "name": "Strojárenská, SACHS"
+      },
+      {
+        "lat": 48.3542285,
+        "lng": 17.5741503,
+        "name": "Strojárenská, rázc."
+      },
+      {
+        "lat": 48.3569415,
+        "lng": 17.578473,
+        "name": "Nerudova"
+      },
+      {
+        "lat": 48.3570793,
+        "lng": 17.5829498,
+        "name": "Linčianska"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.377844,
+        "lng": 17.5816985,
+        "name": "Hospodárska, Bernolákova brána"
+      },
+      {
+        "lat": 48.381405,
+        "lng": 17.582867,
+        "name": "Zelený kríčok"
+      },
+      {
+        "lat": 48.3841777,
+        "lng": 17.5911249,
+        "name": "Špačinská"
+      },
+      {
+        "lat": 48.3886149,
+        "lng": 17.590724,
+        "name": "Kukučínova, Obch. akadémia"
+      },
+      {
+        "lat": 48.3911985,
+        "lng": 17.5878292,
+        "name": "Kukučínova"
+      },
+      {
+        "lat": 48.3937275,
+        "lng": 17.5913749,
+        "name": "J. Hlubíka"
+      },
+      {
+        "lat": 48.3919062,
+        "lng": 17.5942423,
+        "name": "Kopánka, Nám. SUT"
+      },
+      {
+        "lat": 48.3913442,
+        "lng": 17.5961156,
+        "name": "Špačinská, Nám. SUT"
+      },
+      {
+        "lat": 48.4028173,
+        "lng": 17.6073161,
+        "name": "Letisko"
+      }
+    ],
+    "routeName": "1"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3570793,
+        "lng": 17.5829498,
+        "name": "Linčianska"
+      },
+      {
+        "lat": 48.3569415,
+        "lng": 17.578473,
+        "name": "Nerudova"
+      },
+      {
+        "lat": 48.3597109,
+        "lng": 17.5787183,
+        "name": "Bratislavská"
+      },
+      {
+        "lat": 48.3630177,
+        "lng": 17.5845075,
+        "name": "Gorkého, ZŠ"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.377844,
+        "lng": 17.5816985,
+        "name": "Hospodárska, Bernolákova brána"
+      },
+      {
+        "lat": 48.381405,
+        "lng": 17.582867,
+        "name": "Zelený kríčok"
+      },
+      {
+        "lat": 48.3819716,
+        "lng": 17.5776415,
+        "name": "T. Vansovej, cintorín"
+      },
+      {
+        "lat": 48.3790437,
+        "lng": 17.5716537,
+        "name": "T. Vansovej, Okružné nám."
+      },
+      {
+        "lat": 48.3772917,
+        "lng": 17.5678036,
+        "name": "T. Vansovej, žel. prejazd"
+      },
+      {
+        "lat": 48.3744672,
+        "lng": 17.5626829,
+        "name": "Kamenná cesta, cintorín"
+      },
+      {
+        "lat": 48.3680489,
+        "lng": 17.5496288,
+        "name": "Kamenný mlyn"
+      },
+      {
+        "lat": 48.3665433,
+        "lng": 17.5435625,
+        "name": "Záhradkárska osada"
+      },
+      {
+        "lat": 48.3661376,
+        "lng": 17.5386588,
+        "name": "Rekreačná"
+      },
+      {
+        "lat": 48.3615725,
+        "lng": 17.5322936,
+        "name": "Kočišské, rázcestie"
+      },
+      {
+        "lat": 48.3573287,
+        "lng": 17.5346802,
+        "name": "Kočišské"
+      }
+    ],
+    "routeName": "2"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3919062,
+        "lng": 17.5942423,
+        "name": "Kopánka, Nám. SUT"
+      },
+      {
+        "lat": 48.3894665,
+        "lng": 17.5971465,
+        "name": "Saleziánska"
+      },
+      {
+        "lat": 48.3871028,
+        "lng": 17.5987826,
+        "name": "Veterná"
+      },
+      {
+        "lat": 48.3826493,
+        "lng": 17.5999405,
+        "name": "Družba"
+      },
+      {
+        "lat": 48.3801036,
+        "lng": 17.5983994,
+        "name": "V. Clementisa, Poliklinika"
+      },
+      {
+        "lat": 48.3774446,
+        "lng": 17.5992932,
+        "name": "V. Clementisa"
+      },
+      {
+        "lat": 48.3742747,
+        "lng": 17.5983291,
+        "name": "Spartakovská"
+      },
+      {
+        "lat": 48.3721912,
+        "lng": 17.5893565,
+        "name": "Kollárova"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.3720815,
+        "lng": 17.5753951,
+        "name": "J. Bottu"
+      },
+      {
+        "lat": 48.3701352,
+        "lng": 17.5697506,
+        "name": "Prednádražie, G. Dusíka"
+      }
+    ],
+    "routeName": "3"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3545858,
+        "lng": 17.5659,
+        "name": "Strojárenská, BOGE"
+      },
+      {
+        "lat": 48.357074,
+        "lng": 17.564238,
+        "name": "Coburgova, HKS"
+      },
+      {
+        "lat": 48.3569673,
+        "lng": 17.5714835,
+        "name": "Strojárenská, SACHS"
+      },
+      {
+        "lat": 48.3542285,
+        "lng": 17.5741503,
+        "name": "Strojárenská, rázc."
+      },
+      {
+        "lat": 48.3569415,
+        "lng": 17.578473,
+        "name": "Nerudova"
+      },
+      {
+        "lat": 48.3570793,
+        "lng": 17.5829498,
+        "name": "Linčianska"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3721912,
+        "lng": 17.5893565,
+        "name": "Kollárova"
+      },
+      {
+        "lat": 48.3742747,
+        "lng": 17.5983291,
+        "name": "Spartakovská"
+      },
+      {
+        "lat": 48.3774446,
+        "lng": 17.5992932,
+        "name": "V. Clementisa"
+      },
+      {
+        "lat": 48.3801036,
+        "lng": 17.5983994,
+        "name": "V. Clementisa, Poliklinika"
+      },
+      {
+        "lat": 48.3826493,
+        "lng": 17.5999405,
+        "name": "Družba"
+      },
+      {
+        "lat": 48.3871028,
+        "lng": 17.5987826,
+        "name": "Veterná"
+      },
+      {
+        "lat": 48.3894665,
+        "lng": 17.5971465,
+        "name": "Saleziánska"
+      },
+      {
+        "lat": 48.3913442,
+        "lng": 17.5961156,
+        "name": "Špačinská, Nám. SUT"
+      }
+    ],
+    "routeName": "4"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.363486,
+        "lng": 17.6084303,
+        "name": "Nitrianska IKEA"
+      },
+      {
+        "lat": 48.3569673,
+        "lng": 17.5714835,
+        "name": "Strojárenská, SACHS"
+      },
+      {
+        "lat": 48.3542285,
+        "lng": 17.5741503,
+        "name": "Strojárenská, rázc."
+      },
+      {
+        "lat": 48.3569415,
+        "lng": 17.578473,
+        "name": "Nerudova"
+      },
+      {
+        "lat": 48.3570793,
+        "lng": 17.5829498,
+        "name": "Linčianska"
+      },
+      {
+        "lat": 48.3589102,
+        "lng": 17.5958524,
+        "name": "Mikovíniho"
+      },
+      {
+        "lat": 48.3624687,
+        "lng": 17.5956588,
+        "name": "Bulharská, Tatrachema"
+      },
+      {
+        "lat": 48.3670457,
+        "lng": 17.5930929,
+        "name": "Bulharská, Potraviny"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.3750466,
+        "lng": 17.569027,
+        "name": "Botanická, Jednota"
+      }
+    ],
+    "routeName": "5"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3917397,
+        "lng": 17.6052904,
+        "name": "Sibírska"
+      },
+      {
+        "lat": 48.3907567,
+        "lng": 17.6023266,
+        "name": "Olympijská"
+      },
+      {
+        "lat": 48.3871028,
+        "lng": 17.5987826,
+        "name": "Veterná"
+      },
+      {
+        "lat": 48.385777,
+        "lng": 17.5964488,
+        "name": "Okružná"
+      },
+      {
+        "lat": 48.3841777,
+        "lng": 17.5911249,
+        "name": "Špačinská"
+      },
+      {
+        "lat": 48.3818485,
+        "lng": 17.5825906,
+        "name": "Šrobárova"
+      },
+      {
+        "lat": 48.377844,
+        "lng": 17.5816985,
+        "name": "Hospodárska, Bernolákova brána"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.3720815,
+        "lng": 17.5753951,
+        "name": "J. Bottu"
+      },
+      {
+        "lat": 48.3701352,
+        "lng": 17.5697506,
+        "name": "Prednádražie, G. Dusíka"
+      }
+    ],
+    "routeName": "6"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3570793,
+        "lng": 17.5829498,
+        "name": "Linčianska"
+      },
+      {
+        "lat": 48.3653358,
+        "lng": 17.5816063,
+        "name": "Bratislavská, Coburgova"
+      },
+      {
+        "lat": 48.3674485,
+        "lng": 17.5844463,
+        "name": "Stromová"
+      },
+      {
+        "lat": 48.3721912,
+        "lng": 17.5893565,
+        "name": "Kollárova"
+      },
+      {
+        "lat": 48.3783229,
+        "lng": 17.593272,
+        "name": "Hlboká"
+      },
+      {
+        "lat": 48.3841777,
+        "lng": 17.5911249,
+        "name": "Špačinská"
+      },
+      {
+        "lat": 48.3886149,
+        "lng": 17.590724,
+        "name": "Kukučínova, Obch. akadémia"
+      },
+      {
+        "lat": 48.3911985,
+        "lng": 17.5878292,
+        "name": "Kukučínova"
+      },
+      {
+        "lat": 48.3937275,
+        "lng": 17.5913749,
+        "name": "J. Hlubíka"
+      },
+      {
+        "lat": 48.3919062,
+        "lng": 17.5942423,
+        "name": "Kopánka, Nám. SUT"
+      }
+    ],
+    "routeName": "12"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3826493,
+        "lng": 17.5999405,
+        "name": "Družba"
+      },
+      {
+        "lat": 48.3801036,
+        "lng": 17.5983994,
+        "name": "V. Clementisa, Poliklinika"
+      },
+      {
+        "lat": 48.3774446,
+        "lng": 17.5992932,
+        "name": "V. Clementisa"
+      },
+      {
+        "lat": 48.3742747,
+        "lng": 17.5983291,
+        "name": "Spartakovská"
+      },
+      {
+        "lat": 48.3783229,
+        "lng": 17.593272,
+        "name": "Hlboká"
+      },
+      {
+        "lat": 48.3818485,
+        "lng": 17.5825906,
+        "name": "Šrobárova"
+      },
+      {
+        "lat": 48.3819716,
+        "lng": 17.5776415,
+        "name": "T. Vansovej, cintorín"
+      },
+      {
+        "lat": 48.3790437,
+        "lng": 17.5716537,
+        "name": "T. Vansovej, Okružné nám."
+      },
+      {
+        "lat": 48.3772917,
+        "lng": 17.5678036,
+        "name": "T. Vansovej, žel. prejazd"
+      },
+      {
+        "lat": 48.3744672,
+        "lng": 17.5626829,
+        "name": "Kamenná cesta, cintorín"
+      },
+      {
+        "lat": 48.3680489,
+        "lng": 17.5496288,
+        "name": "Kamenný mlyn"
+      }
+    ],
+    "routeName": "13"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3934247,
+        "lng": 17.5993892,
+        "name": "Viktoríniho nám."
+      },
+      {
+        "lat": 48.3907567,
+        "lng": 17.6023266,
+        "name": "Olympijská"
+      },
+      {
+        "lat": 48.3826493,
+        "lng": 17.5999405,
+        "name": "Družba"
+      },
+      {
+        "lat": 48.3801036,
+        "lng": 17.5983994,
+        "name": "V. Clementisa, Poliklinika"
+      },
+      {
+        "lat": 48.3783229,
+        "lng": 17.593272,
+        "name": "Hlboká"
+      },
+      {
+        "lat": 48.3818485,
+        "lng": 17.5825906,
+        "name": "Šrobárova"
+      },
+      {
+        "lat": 48.377844,
+        "lng": 17.5816985,
+        "name": "Hospodárska, Bernolákova brána"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3669824,
+        "lng": 17.591816,
+        "name": "Tamaškovičova"
+      },
+      {
+        "lat": 48.3624687,
+        "lng": 17.5956588,
+        "name": "Bulharská, Tatrachema"
+      },
+      {
+        "lat": 48.3628369,
+        "lng": 17.6021957,
+        "name": "Nitrianska"
+      },
+      {
+        "lat": 48.3542569,
+        "lng": 17.6071485,
+        "name": "Modranka"
+      }
+    ],
+    "routeName": "14"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3926797,
+        "lng": 17.5663336,
+        "name": "Nemečanka"
+      },
+      {
+        "lat": 48.3888431,
+        "lng": 17.5688138,
+        "name": "Trstínska, Skladová"
+      },
+      {
+        "lat": 48.386131,
+        "lng": 17.5735662,
+        "name": "Trstínska, Cukrová"
+      },
+      {
+        "lat": 48.3750466,
+        "lng": 17.569027,
+        "name": "Botanická, Jednota"
+      },
+      {
+        "lat": 48.3705705,
+        "lng": 17.5704489,
+        "name": "Prednádražie, Botanická"
+      },
+      {
+        "lat": 48.3720815,
+        "lng": 17.5753951,
+        "name": "J. Bottu"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.3721912,
+        "lng": 17.5893565,
+        "name": "Kollárova"
+      },
+      {
+        "lat": 48.3729965,
+        "lng": 17.5948164,
+        "name": "Sladovnícka"
+      },
+      {
+        "lat": 48.3711587,
+        "lng": 17.5990362,
+        "name": "Bernolákova, Kriváň"
+      },
+      {
+        "lat": 48.3732752,
+        "lng": 17.6041296,
+        "name": "Bernolákova"
+      },
+      {
+        "lat": 48.3738401,
+        "lng": 17.6085403,
+        "name": "Koniarekova, ŽOS"
+      },
+      {
+        "lat": 48.3728117,
+        "lng": 17.6136257,
+        "name": "Vozovka"
+      },
+      {
+        "lat": 48.3663006,
+        "lng": 17.6082689,
+        "name": "Belgická"
+      },
+      {
+        "lat": 48.367833,
+        "lng": 17.6158567,
+        "name": "Nová"
+      },
+      {
+        "lat": 48.3669276,
+        "lng": 17.6111296,
+        "name": "Nová, TMT"
+      },
+      {
+        "lat": 48.3646646,
+        "lng": 17.6118852,
+        "name": "Nová, OC OBI"
+      }
+    ],
+    "routeName": "16"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3542569,
+        "lng": 17.6071485,
+        "name": "Modranka"
+      },
+      {
+        "lat": 48.3507797,
+        "lng": 17.6094745,
+        "name": "Modranka, Pošta"
+      },
+      {
+        "lat": 48.3464579,
+        "lng": 17.6144197,
+        "name": "Modranka, Jednota"
+      },
+      {
+        "lat": 48.3628369,
+        "lng": 17.6021957,
+        "name": "Nitrianska"
+      },
+      {
+        "lat": 48.3669824,
+        "lng": 17.591816,
+        "name": "Tamaškovičova"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.3720815,
+        "lng": 17.5753951,
+        "name": "J. Bottu"
+      },
+      {
+        "lat": 48.3705705,
+        "lng": 17.5704489,
+        "name": "Prednádražie, Botanická"
+      },
+      {
+        "lat": 48.3750466,
+        "lng": 17.569027,
+        "name": "Botanická, Jednota"
+      },
+      {
+        "lat": 48.3819716,
+        "lng": 17.5776415,
+        "name": "T. Vansovej, cintorín"
+      },
+      {
+        "lat": 48.381405,
+        "lng": 17.582867,
+        "name": "Zelený kríčok"
+      },
+      {
+        "lat": 48.3841777,
+        "lng": 17.5911249,
+        "name": "Špačinská"
+      },
+      {
+        "lat": 48.3866612,
+        "lng": 17.591499,
+        "name": "Špačinská, Obch. akadémia"
+      },
+      {
+        "lat": 48.3913442,
+        "lng": 17.5961156,
+        "name": "Špačinská, Nám. SUT"
+      },
+      {
+        "lat": 48.3917397,
+        "lng": 17.6052904,
+        "name": "Sibírska"
+      }
+    ],
+    "routeName": "21"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3570793,
+        "lng": 17.5829498,
+        "name": "Linčianska"
+      },
+      {
+        "lat": 48.3684665,
+        "lng": 17.5866868,
+        "name": "Dohnányho"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.3819716,
+        "lng": 17.5776415,
+        "name": "T. Vansovej, cintorín"
+      },
+      {
+        "lat": 48.381405,
+        "lng": 17.582867,
+        "name": "Zelený kríčok"
+      },
+      {
+        "lat": 48.3841777,
+        "lng": 17.5911249,
+        "name": "Špačinská"
+      },
+      {
+        "lat": 48.3866612,
+        "lng": 17.591499,
+        "name": "Špačinská, Obch. akadémia"
+      },
+      {
+        "lat": 48.3913442,
+        "lng": 17.5961156,
+        "name": "Špačinská, Nám. SUT"
+      },
+      {
+        "lat": 48.3917397,
+        "lng": 17.6052904,
+        "name": "Sibírska"
+      },
+      {
+        "lat": 48.3907567,
+        "lng": 17.6023266,
+        "name": "Olympijská"
+      },
+      {
+        "lat": 48.3871028,
+        "lng": 17.5987826,
+        "name": "Veterná"
+      },
+      {
+        "lat": 48.3826493,
+        "lng": 17.5999405,
+        "name": "Družba"
+      },
+      {
+        "lat": 48.3801036,
+        "lng": 17.5983994,
+        "name": "V. Clementisa, Poliklinika"
+      },
+      {
+        "lat": 48.3774446,
+        "lng": 17.5992932,
+        "name": "V. Clementisa"
+      },
+      {
+        "lat": 48.3742747,
+        "lng": 17.5983291,
+        "name": "Spartakovská"
+      },
+      {
+        "lat": 48.3729965,
+        "lng": 17.5948164,
+        "name": "Sladovnícka"
+      },
+      {
+        "lat": 48.3711587,
+        "lng": 17.5990362,
+        "name": "Bernolákova, Kriváň"
+      },
+      {
+        "lat": 48.3732752,
+        "lng": 17.6041296,
+        "name": "Bernolákova"
+      },
+      {
+        "lat": 48.3738401,
+        "lng": 17.6085403,
+        "name": "Koniarekova, ŽOS"
+      },
+      {
+        "lat": 48.3728117,
+        "lng": 17.6136257,
+        "name": "Vozovka"
+      }
+    ],
+    "routeName": "22"
+  },
+  {
+    "coordinates": [
+      {
+        "lat": 48.3917397,
+        "lng": 17.6052904,
+        "name": "Sibírska"
+      },
+      {
+        "lat": 48.3919062,
+        "lng": 17.5942423,
+        "name": "Kopánka, Nám. SUT"
+      },
+      {
+        "lat": 48.3866612,
+        "lng": 17.591499,
+        "name": "Špačinská, Obch. akadémia"
+      },
+      {
+        "lat": 48.3841777,
+        "lng": 17.5911249,
+        "name": "Špačinská"
+      },
+      {
+        "lat": 48.3818485,
+        "lng": 17.5825906,
+        "name": "Šrobárova"
+      },
+      {
+        "lat": 48.3819716,
+        "lng": 17.5776415,
+        "name": "T. Vansovej, cintorín"
+      },
+      {
+        "lat": 48.3750466,
+        "lng": 17.569027,
+        "name": "Botanická, Jednota"
+      },
+      {
+        "lat": 48.3705705,
+        "lng": 17.5704489,
+        "name": "Prednádražie, Botanická"
+      },
+      {
+        "lat": 48.3666075,
+        "lng": 17.5699733,
+        "name": "J. G. Tajovského"
+      },
+      {
+        "lat": 48.3665052,
+        "lng": 17.5735609,
+        "name": "B. Smetanu"
+      },
+      {
+        "lat": 48.369251,
+        "lng": 17.5768247,
+        "name": "J. Bottu, Park J. Kráľa"
+      },
+      {
+        "lat": 48.3720815,
+        "lng": 17.5753951,
+        "name": "J. Bottu"
+      },
+      {
+        "lat": 48.374835,
+        "lng": 17.5750196,
+        "name": "Študentská, ZŠ"
+      },
+      {
+        "lat": 48.376296,
+        "lng": 17.5815588,
+        "name": "Študentská, Orion"
+      },
+      {
+        "lat": 48.3727454,
+        "lng": 17.5840041,
+        "name": "Hospodárska"
+      },
+      {
+        "lat": 48.3721912,
+        "lng": 17.5893565,
+        "name": "Kollárova"
+      },
+      {
+        "lat": 48.3729965,
+        "lng": 17.5948164,
+        "name": "Sladovnícka"
+      },
+      {
+        "lat": 48.3711587,
+        "lng": 17.5990362,
+        "name": "Bernolákova, Kriváň"
+      },
+      {
+        "lat": 48.3732752,
+        "lng": 17.6041296,
+        "name": "Bernolákova"
+      },
+      {
+        "lat": 48.3738401,
+        "lng": 17.6085403,
+        "name": "Koniarekova, ŽOS"
+      },
+      {
+        "lat": 48.3728117,
+        "lng": 17.6136257,
+        "name": "Vozovka"
+      }
+    ],
+    "routeName": "23"
+  }
+]
