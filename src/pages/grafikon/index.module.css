@@ -113,14 +113,6 @@
   z-index: 999999;
 }
 
-.iframeModal iframe {
-  width: 90%;
-  height: 90%;
-  background-color: white;
-  border-radius: 1rem;
-  border: solid 3px black;
-}
-
 .whiteButton {
   color: white;
   border-color: rgba(255, 255, 255, 0.8) !important;

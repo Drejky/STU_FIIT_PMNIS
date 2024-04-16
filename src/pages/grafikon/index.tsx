@@ -15,6 +15,7 @@ import _ from 'lodash';
 import { Rating, Typography } from '@mui/material';
 import test from 'node:test';
 import Cookies from 'js-cookie';
+import GrafikonDetailPage from '@/components/grafikonDetail/[number]';
 const CustomMarker = dynamic(() => import('@/components/CustomMarker'), {
   ssr: false,
   loading: () => <div>Loading...</div>,
@@ -136,7 +137,7 @@ const grafikonPage = () => {
             setFakeLoadPending(true);
             setTimeout(() => {
               setFakeLoad(false);
-            }, 1);
+            }, 4000);
           }}
         >
           Generuj
@@ -242,10 +243,11 @@ const grafikonPage = () => {
         )}
         {grafikonDetailIframe && (
           <div className={styles.iframeModal}>
-            <iframe
-              src={`/grafikonDetail/${currentGrafikon}`}
-              title="Bus Detail"
-            ></iframe>
+            {/* <iframe src={`/grafikonDetail/1`} title="Bus Detail"></iframe> */}
+            <GrafikonDetailPage
+              number={currentGrafikon}
+              css={'iframeContainer'}
+            />
             <CustomButton
               onClick={() => setGrafikonDetailIframe(false)}
               className={styles.whiteButton}

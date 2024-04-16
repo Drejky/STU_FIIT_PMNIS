@@ -14,3 +14,12 @@
   gap: 1rem;
   justify-content: center;
 }
+
+.iframeContainer {
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  border-radius: 1rem;
+  border: solid 3px black;
+  overflow-y: scroll;
+}

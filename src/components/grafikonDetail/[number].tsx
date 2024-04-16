@@ -1,6 +1,6 @@
 // Boilerplate nextjs page
 import React, { useEffect, useState } from 'react';
-import styles from '../grafikon/index.module.css';
+import styles from '@/pages/grafikon/index.module.css';
 import graphStyles from '../../pages/data/index.module.css';
 import newStyles from './index.module.css';
 import CustomButton from '@/components/CustomButton';
@@ -103,9 +103,9 @@ const GrafikonMap = ({ name }: any) => {
     );
 };
 
-const GrafikonDetailPage: React.FC = () => {
-  const router = useRouter();
-  const { number: fuck } = router.query;
+const GrafikonDetailPage = ({ number, css }: any) => {
+  // const router = useRouter();
+  // const { number: number } = router.query;
 
   const { busStops, isLoading, error } = useBusStops();
   const data = {
@@ -138,15 +138,15 @@ const GrafikonDetailPage: React.FC = () => {
   else
     return (
       typeof window !== 'undefined' && (
-        <>
+        <div className={newStyles.iframeContainer}>
           <div className={newStyles.maps}>
-            <GrafikonMap name={fuck} />
+            <GrafikonMap name={number} />
             <GrafikonMap name="Groningen" />
           </div>
           <div className={newStyles.conteiner}>
             <div className={newStyles.container}>
               <h2>Counterfactual examples</h2>
-              <p>Grafikon {fuck}, Linka 1:</p>
+              <p>Grafikon {number}, Linka 1:</p>
               <p>
                 Ak by vytazenost zastavky Kollárova bola 1, linka by isla cez
                 zastavku Bernolákova
@@ -156,7 +156,7 @@ const GrafikonDetailPage: React.FC = () => {
               </div>
             </div>
           </div>
-        </>
+        </div>
       )
     );
 };
